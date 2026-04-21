@@ -17,15 +17,8 @@
 }
 
 body {
-  background: #0b1a2f;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* FONDO */
-canvas {
-  position: fixed;
-  z-index: -1;
+  background: #0f172a; /* azul oscuro moderno */
+  color: #e2e8f0;
 }
 
 /* NAV */
@@ -33,16 +26,17 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
+  border-bottom: 1px solid #1e293b;
 }
 
 nav a {
-  color: #ccc;
+  color: #94a3b8;
   margin-left: 20px;
   text-decoration: none;
 }
 
 nav a:hover {
-  color: #f5b400;
+  color: #38bdf8;
 }
 
 /* HERO */
@@ -52,29 +46,42 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 58px;
   font-weight: 800;
 }
 
 .hero span {
-  color: #f5b400;
-  text-shadow: 0 0 20px #f5b400;
+  color: #38bdf8; /* azul brillante */
 }
 
 .hero p {
   margin-top: 20px;
-  color: #ccc;
+  color: #94a3b8;
 }
 
+/* BOTONES */
 .btn {
   display: inline-block;
   margin-top: 25px;
   padding: 12px 18px;
-  background: #f5b400;
-  color: black;
-  text-decoration: none;
   border-radius: 8px;
-  box-shadow: 0 0 15px #f5b400;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-main {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.btn-repo {
+  background: #22c55e;
+  color: white;
+}
+
+.btn-pdf {
+  background: #ef4444;
+  color: white;
 }
 
 /* SECCIONES */
@@ -83,33 +90,32 @@ nav a:hover {
 }
 
 .section h2 {
-  color: #f5b400;
+  color: #38bdf8;
   margin-bottom: 20px;
 }
 
-/* GRID PROYECTOS */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 20px;
 }
 
+/* CARDS */
 .card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
+  background: #1e293b;
   padding: 20px;
   border-radius: 12px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(245,180,0,0.3);
+  border: 1px solid #38bdf8;
 }
 
 .tag {
   font-size: 12px;
-  background: #1B6B3A;
+  background: #334155;
   padding: 5px 10px;
   border-radius: 10px;
   margin-right: 5px;
@@ -118,7 +124,7 @@ nav a:hover {
 /* SKILLS */
 .skills span {
   display: inline-block;
-  background: #122743;
+  background: #1e293b;
   padding: 8px 12px;
   margin: 5px;
   border-radius: 8px;
@@ -128,7 +134,7 @@ nav a:hover {
 footer {
   text-align: center;
   padding: 40px;
-  color: #777;
+  color: #64748b;
 }
 
 </style>
@@ -136,10 +142,8 @@ footer {
 
 <body>
 
-<canvas id="bg"></canvas>
-
 <nav>
-  <div><strong>jhon cristhian gonzales quispe</strong></div>
+  <div><strong>Jhon Cristhian Gonzales Quispe</strong></div>
   <div>
     <a href="#">Inicio</a>
     <a href="#proyectos">Proyectos</a>
@@ -153,7 +157,7 @@ footer {
   <p>
     Portafolio de análisis geoespacial, visualización de datos y modelamiento estadístico aplicado.
   </p>
-  <a href="#proyectos" class="btn">Ver proyectos</a>
+  <a href="#proyectos" class="btn btn-main">Ver proyectos</a>
 </section>
 
 <!-- PROYECTOS -->
@@ -164,21 +168,32 @@ footer {
 
     <div class="card">
       <h3>Análisis Agrícola Perú</h3>
-      <p>Uso de R para análisis espacial de datos agrícolas.</p>
+      <p>Análisis espacial con R usando datos del Censo Agropecuario.</p>
+
       <div>
         <span class="tag">R</span>
         <span class="tag">sf</span>
         <span class="tag">ggplot2</span>
       </div>
+
       <br>
-      <a href="TU_REPO" class="btn">Repositorio</a>
-      <a href="TU_PDF" class="btn">Informe</a>
+
+      <a href="https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales.git" class="btn btn-repo" target="_blank">
+        Repositorio
+      </a>
+
+      <a href="https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/blob/main/" class="btn btn-pdf" target="_blank">
+        Ver Informe
+      </a>
     </div>
 
     <div class="card">
       <h3>Monografía SIG</h3>
-      <p>Fundamentos teóricos de sistemas de información geográfica.</p>
-      <a href="TU_PDF" class="btn">Ver PDF</a>
+      <p>Trabajo teórico sobre sistemas de información geográfica.</p>
+
+      <a href="https://github.com/Jhonynanicollab/trabajos-de-informes-en-pdf-.git" class="btn btn-pdf" target="_blank">
+        Ver PDF
+      </a>
     </div>
 
   </div>
@@ -201,68 +216,17 @@ footer {
 <!-- CONTACTO -->
 <section id="contacto" class="section">
   <h2>📬 Contacto</h2>
-  <p>Puedes encontrarme en GitHub o contactarme para proyectos.</p>
+  <p>
+    GitHub: 
+    <a href="https://github.com/Jhonynanicollab" style="color:#38bdf8;" target="_blank">
+      github.com/Jhonynanicollab
+    </a>
+  </p>
 </section>
 
 <footer>
   © 2026 Portafolio profesional
 </footer>
-
-<script>
-
-/* FONDO PRO CON LÍNEAS */
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let points = [];
-
-for (let i = 0; i < 70; i++) {
-  points.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    dx: (Math.random()-0.5),
-    dy: (Math.random()-0.5)
-  });
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  points.forEach(p => {
-    p.x += p.dx;
-    p.y += p.dy;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fillStyle="#f5b400";
-    ctx.fill();
-  });
-
-  for(let i=0;i<points.length;i++){
-    for(let j=i+1;j<points.length;j++){
-      let dx = points[i].x - points[j].x;
-      let dy = points[i].y - points[j].y;
-      let dist = Math.sqrt(dx*dx + dy*dy);
-
-      if(dist < 120){
-        ctx.strokeStyle="rgba(245,180,0,0.1)";
-        ctx.beginPath();
-        ctx.moveTo(points[i].x,points[i].y);
-        ctx.lineTo(points[j].x,points[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-</script>
 
 </body>
 </html>
