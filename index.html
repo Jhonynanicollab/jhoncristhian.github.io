@@ -3,289 +3,920 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio - Estadística Espacial</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<title>Portafolio — Estadística Espacial</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 <style>
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+:root {
+  --bg:        #080d14;
+  --bg2:       #0d1520;
+  --card:      #111c2b;
+  --border:    #1e3048;
+  --accent:    #3bf0c5;
+  --accent2:   #1d8cff;
+  --text:      #cfe4ff;
+  --muted:     #4a6a8a;
+  --danger:    #ff4d6d;
+  --gold:      #f5c542;
+  --radius:    14px;
 }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: #0f172a;
-  color: #e2e8f0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* NAV */
+/* ── GRID BG ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,48,72,.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,48,72,.35) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
-  border-bottom: 1px solid #1e293b;
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 60px;
+  background: rgba(8,13,20,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--accent);
+  letter-spacing: .5px;
 }
 
 nav a {
-  color: #94a3b8;
-  margin-left: 20px;
+  color: var(--muted);
+  margin-left: 28px;
   text-decoration: none;
+  font-size: 13px;
+  letter-spacing: .5px;
+  transition: color .2s;
 }
+nav a:hover { color: var(--accent); }
 
-nav a:hover {
-  color: #38bdf8;
-}
-
-/* HERO */
+/* ── HERO ── */
 .hero {
-  padding: 100px 60px;
-  max-width: 800px;
+  position: relative; z-index: 1;
+  padding: 120px 60px 80px;
+  max-width: 860px;
 }
 
-.hero h1 {
-  font-size: 58px;
-  font-weight: 800;
-}
-
-.hero span {
-  color: #38bdf8;
-}
-
-.hero p {
-  margin-top: 20px;
-  color: #94a3b8;
-}
-
-/* BOTONES */
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.btn-main {
-  background: #38bdf8;
-  color: #0f172a;
-}
-
-.btn-repo {
-  background: #22c55e;
-  color: white;
-}
-
-.btn-pdf {
-  background: #ef4444;
-  color: white;
-}
-
-/* SECCIONES */
-.section {
-  padding: 60px;
-}
-
-.section h2 {
-  color: #38bdf8;
+.hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 20px;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(46px, 7vw, 80px);
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent2);
+}
+
+.hero p {
+  margin-top: 22px;
+  color: var(--muted);
+  max-width: 500px;
+  font-size: 15px;
+}
+
+.hero-btns { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+}
+.btn:hover { opacity: .85; transform: translateY(-1px); }
+
+.btn-accent  { background: var(--accent);  color: var(--bg); }
+.btn-blue    { background: var(--accent2); color: #fff; }
+.btn-red     { background: var(--danger);  color: #fff; }
+.btn-gold    { background: var(--gold);    color: var(--bg); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── SECTION ── */
+.section {
+  position: relative; z-index: 1;
+  padding: 70px 60px;
+}
+
+.section-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 36px;
+  flex-wrap: wrap; gap: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--text);
+}
+
+.section-title span { color: var(--accent); }
+
+/* ── PROYECTO CARDS ── */
+.projects-list {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-/* CARDS */
-.card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.card:hover {
-  border: 1px solid #38bdf8;
-}
-
-.tag {
-  font-size: 12px;
-  background: #334155;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-right: 5px;
-}
-
-/* SKILLS */
-.skills span {
-  display: inline-block;
-  background: #1e293b;
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 8px;
-}
-
-/* MODAL PDF */
-#pdfModal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  z-index: 999;
-}
-
-.modal-content {
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  transition: border-color .25s, box-shadow .25s;
   position: relative;
-  width: 80%;
-  height: 85%;
-  margin: 3% auto;
-  background: white;
-  border-radius: 10px;
   overflow: hidden;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 25px;
-  cursor: pointer;
-  color: black;
+.project-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform .3s;
+}
+.project-card:hover::before { transform: scaleY(1); }
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(59,240,197,.08);
 }
 
-/* FOOTER */
-footer {
+.project-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  min-width: 52px;
+  transition: color .3s;
+}
+.project-card:hover .project-number { color: var(--accent); }
+
+.project-body { flex: 1; }
+
+.project-meta {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.project-type {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+}
+
+.project-card h3 {
+  font-size: 18px; font-weight: 600;
+  color: #e8f4ff;
+  margin-bottom: 6px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+
+.tag {
+  font-size: 11px; background: rgba(59,240,197,.1);
+  color: var(--accent); padding: 3px 10px;
+  border-radius: 20px; border: 1px solid rgba(59,240,197,.2);
+}
+
+.project-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.skill-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
   text-align: center;
-  padding: 40px;
-  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color .2s, color .2s;
+}
+.skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── CONTACT ── */
+.contact-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--accent2); text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.contact-link:hover { border-color: var(--accent2); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 40px;
+  color: var(--muted); font-size: 13px;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
 }
 
+/* ══════════════════════════════════════════
+   VISOR PDF TIPO LIBRO
+══════════════════════════════════════════ */
+#bookModal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(4,9,16,.92);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#bookModal.open { display: flex; }
+
+.book-container {
+  position: relative;
+  width: min(900px, 95vw);
+  height: min(620px, 90vh);
+  display: flex;
+  flex-direction: column;
+  animation: bookAppear .4s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes bookAppear {
+  from { opacity:0; transform: scale(.94) translateY(20px); }
+  to   { opacity:1; transform: scale(1)   translateY(0); }
+}
+
+.book-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.book-title-bar {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+
+.book-dot { width:8px; height:8px; border-radius:50%; }
+.dot-r { background:#ff5f57; }
+.dot-y { background:#febc2e; }
+.dot-g { background:#28c840; }
+
+.book-controls { display: flex; align-items: center; gap: 10px; }
+
+.book-btn {
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--text); padding: 6px 14px;
+  border-radius: 6px; font-size: 12px; cursor: pointer;
+  transition: border-color .2s;
+}
+.book-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.book-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: 20px; line-height: 1;
+  transition: color .2s;
+}
+.book-close:hover { color: var(--danger); }
+
+/* El libro visual */
+.book-stage {
+  flex: 1;
+  background: #1a0e0a;
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--radius) var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* sombra de libro */
+.book-shadow {
+  position: absolute;
+  bottom: 20px;
+  width: 70%;
+  height: 30px;
+  background: rgba(0,0,0,.5);
+  border-radius: 50%;
+  filter: blur(18px);
+}
+
+.book-wrap {
+  position: relative;
+  width: min(680px, 90%);
+  height: calc(100% - 40px);
+  perspective: 1800px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* Portada del libro (visible antes de cargar PDF) */
+.book-cover {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0a1628, #1a2f50);
+  border-radius: 4px 12px 12px 4px;
+  border: 1px solid var(--border);
+  box-shadow: -8px 8px 40px rgba(0,0,0,.6), inset -2px 0 8px rgba(0,0,0,.3);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px; z-index: 2;
+  transition: opacity .4s;
+}
+.book-cover.hidden { opacity: 0; pointer-events: none; }
+
+.book-cover-icon { font-size: 52px; }
+.book-cover-title { font-size: 16px; font-weight: 600; color: var(--text); text-align: center; padding: 0 24px; }
+.book-cover-sub { font-size: 12px; color: var(--muted); }
+
+/* iframe del PDF */
+.book-iframe-wrap {
+  position: absolute; inset: 0;
+  border-radius: 4px 12px 12px 4px;
+  overflow: hidden;
+  box-shadow:
+    -8px 8px 40px rgba(0,0,0,.7),
+    -2px 0 0 rgba(255,255,255,.05),
+    inset -6px 0 20px rgba(0,0,0,.4);
+}
+
+/* línea del lomo */
+.book-iframe-wrap::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 14px;
+  background: linear-gradient(90deg, #050b14, #0d1a2e, #050b14);
+  z-index: 5;
+  border-radius: 4px 0 0 4px;
+  box-shadow: inset -2px 0 6px rgba(0,0,0,.5);
+}
+
+#bookIframe {
+  width: 100%; height: 100%;
+  border: none;
+  display: block;
+}
+
+.book-page-num {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* loader */
+.book-loader {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px; z-index: 10;
+  background: rgba(8,13,20,.7);
+  border-radius: 4px 12px 12px 4px;
+}
+.book-loader.hidden { display: none; }
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ══════════════════════════════════════════
+   PANEL: AGREGAR PROYECTO
+══════════════════════════════════════════ */
+#addModal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(4,9,16,.88);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#addModal.open { display: flex; }
+
+.add-panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: min(560px, 95vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 36px;
+  animation: bookAppear .35s cubic-bezier(.16,1,.3,1);
+}
+
+.add-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.add-panel .sub {
+  font-size: 13px; color: var(--muted); margin-bottom: 28px;
+}
+
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: 12px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 7px;
+  font-weight: 600;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color .2s;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+}
+.form-group textarea { min-height: 80px; }
+
+.form-row { display: flex; gap: 12px; }
+.form-row .form-group { flex: 1; }
+
+.form-hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+.form-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+
+/* ── notificación ── */
+.toast {
+  position: fixed; bottom: 30px; right: 30px;
+  background: var(--card); border: 1px solid var(--accent);
+  color: var(--accent); border-radius: 10px;
+  padding: 14px 22px; font-size: 14px; font-weight: 500;
+  z-index: 9999; opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVO ── */
+@media(max-width: 700px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 70px 20px 50px; }
+  .section { padding: 50px 20px; }
+  .project-card { flex-direction: column; gap: 12px; }
+  .project-number { font-size: 28px; }
+}
 </style>
 </head>
-
 <body>
 
+<!-- NAV -->
 <nav>
-  <div><strong>Jhon Cristhian Gonzales Quispe</strong></div>
-  <div>
-    <a href="#">Inicio</a>
+  <div class="nav-logo">Jhon Gonzales</div>
+  <div class="nav-links">
     <a href="#proyectos">Proyectos</a>
     <a href="#skills">Habilidades</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>ESTADÍSTICA <br><span>ESPACIAL</span></h1>
-  <p>
-    Portafolio de análisis geoespacial y modelamiento estadístico aplicado.
-  </p>
-  <a href="#proyectos" class="btn btn-main">Ver proyectos</a>
+  <p class="hero-eyebrow">Portafolio Académico · 2026</p>
+  <h1>Estadística<br><em>Espacial</em></h1>
+  <p>Análisis geoespacial, modelamiento estadístico y visualización de datos aplicados al contexto peruano.</p>
+  <div class="hero-btns">
+    <a href="#proyectos" class="btn btn-accent">Ver proyectos</a>
+    <button class="btn btn-outline" onclick="abrirAddModal()">＋ Agregar trabajo</button>
+  </div>
 </section>
 
 <!-- PROYECTOS -->
 <section id="proyectos" class="section">
-  <h2>📁 Proyectos</h2>
+  <div class="section-header">
+    <h2 class="section-title">📁 <span>Proyectos</span></h2>
+    <button class="btn btn-outline" style="font-size:12px;" onclick="abrirAddModal()">＋ Nuevo trabajo</button>
+  </div>
 
-  <div class="grid">
-
-    <!-- PROYECTO 1 -->
-    <div class="card">
-      <h3>Análisis Agrícola Perú</h3>
-      <p>Análisis espacial con R usando datos del Censo Agropecuario.</p>
-
-      <div>
-        <span class="tag">R</span>
-        <span class="tag">sf</span>
-        <span class="tag">ggplot2</span>
-      </div>
-
-      <br>
-
-      <a href="https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales" 
-         class="btn btn-repo" target="_blank">
-        Repositorio
-      </a>
-
-      <a class="btn btn-pdf"
-         onclick="abrirPDF('https://raw.githubusercontent.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/main/estadistica_espacial.pdf')">
-        Ver Informe
-      </a>
-    </div>
-
-    <!-- PROYECTO 2 -->
-    <div class="card">
-      <h3>Monografía </h3>
-      <p>Trabajo teórico sobre rasters y vectores.</p>
-
-      <a class="btn btn-pdf"
-         onclick="abrirPDF('https://raw.githubusercontent.com/Jhonynanicollab/trabajos-de-informes-en-pdf-/main/monografia_raster_vectores.pdf')">
-        Ver PDF
-      </a>
-    </div>
-
+  <div class="projects-list" id="projectsList">
+    <!-- Los proyectos se renderizan desde JS -->
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="section">
-  <h2>📊 Habilidades</h2>
-
-  <div class="skills">
-    <span>R</span>
-    <span>Python</span>
-    <span>GIS</span>
-    <span>GeoPandas</span>
-    <span>SQL</span>
-    <span>Data Visualization</span>
+  <h2 class="section-title" style="margin-bottom:28px;">📊 <span>Habilidades</span></h2>
+  <div class="skills-grid">
+    <div class="skill-pill">R</div>
+    <div class="skill-pill">Python</div>
+    <div class="skill-pill">GIS</div>
+    <div class="skill-pill">GeoPandas</div>
+    <div class="skill-pill">SQL</div>
+    <div class="skill-pill">sf (R)</div>
+    <div class="skill-pill">ggplot2</div>
+    <div class="skill-pill">QGIS</div>
+    <div class="skill-pill">Data Viz</div>
+    <div class="skill-pill">Estadística</div>
   </div>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto" class="section">
-  <h2>📬 Contacto</h2>
-  <p>
-    GitHub:
-    <a href="https://github.com/Jhonynanicollab" target="_blank" style="color:#38bdf8;">
-      github.com/Jhonynanicollab
-    </a>
-  </p>
+  <h2 class="section-title" style="margin-bottom:20px;">📬 <span>Contacto</span></h2>
+  <p style="color:var(--muted); margin-bottom:16px;">¿Quieres saber más sobre algún proyecto o colaborar?</p>
+  <a href="https://github.com/Jhonynanicollab" target="_blank" class="contact-link">
+    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    github.com/Jhonynanicollab
+  </a>
 </section>
 
 <footer>
-  © 2026 Portafolio profesional
+  © 2026 Jhon Cristhian Gonzales Quispe · Portafolio de Estadística Espacial
 </footer>
 
-<!-- MODAL PDF -->
-<div id="pdfModal">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarPDF()">✖</span>
-    <iframe id="visorPDF" width="100%" height="100%"></iframe>
+<!-- ═══════════════════════
+  VISOR PDF TIPO LIBRO
+═══════════════════════ -->
+<div id="bookModal" role="dialog" aria-modal="true">
+  <div class="book-container">
+    <div class="book-header">
+      <div class="book-title-bar">
+        <span class="book-dot dot-r"></span>
+        <span class="book-dot dot-y"></span>
+        <span class="book-dot dot-g"></span>
+        <span id="bookTitleBar" style="margin-left:8px;">Documento</span>
+      </div>
+      <div class="book-controls">
+        <a id="bookDownloadBtn" href="#" target="_blank" class="book-btn">⬇ Descargar</a>
+        <button class="book-close" onclick="cerrarLibro()" title="Cerrar">✕</button>
+      </div>
+    </div>
+
+    <div class="book-stage">
+      <div class="book-wrap">
+        <!-- Portada animada -->
+        <div class="book-cover" id="bookCover">
+          <div class="book-cover-icon">📖</div>
+          <div class="book-cover-title" id="bookCoverTitle">Cargando documento…</div>
+          <div class="book-cover-sub">Por favor espera</div>
+        </div>
+
+        <!-- Iframe con el PDF -->
+        <div class="book-iframe-wrap">
+          <div class="book-loader" id="bookLoader">
+            <div class="spinner"></div>
+            <span style="font-size:13px;color:var(--muted);">Abriendo documento…</span>
+          </div>
+          <iframe id="bookIframe" title="Visor de documento"></iframe>
+        </div>
+      </div>
+      <div class="book-shadow"></div>
+    </div>
+
+    <div class="book-page-num" id="bookPageInfo"></div>
   </div>
 </div>
 
+<!-- ═══════════════════════
+  PANEL AGREGAR PROYECTO
+═══════════════════════ -->
+<div id="addModal" role="dialog" aria-modal="true">
+  <div class="add-panel">
+    <h3>＋ Nuevo Trabajo</h3>
+    <p class="sub">Agrega una nueva tarea o proyecto a tu portafolio. Los datos se guardan en el navegador.</p>
+
+    <div class="form-group">
+      <label>Tipo de trabajo</label>
+      <select id="f_type">
+        <option value="Trabajo Práctico">Trabajo Práctico</option>
+        <option value="Monografía">Monografía</option>
+        <option value="Tarea">Tarea</option>
+        <option value="Proyecto Final">Proyecto Final</option>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Título del trabajo *</label>
+      <input type="text" id="f_title" placeholder="Ej: Análisis de Interpolación Espacial">
+    </div>
+
+    <div class="form-group">
+      <label>Descripción corta *</label>
+      <textarea id="f_desc" placeholder="¿De qué trata el trabajo? 1-2 oraciones."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Herramientas / Tags</label>
+      <input type="text" id="f_tags" placeholder="R, ggplot2, sf, Python… (separados por coma)">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>URL del PDF (GitHub raw)</label>
+        <input type="text" id="f_pdf" placeholder="https://raw.githubusercontent.com/…">
+        <p class="form-hint">Pega el enlace "raw" del PDF en tu repositorio de GitHub.</p>
+      </div>
+      <div class="form-group">
+        <label>URL del Repositorio</label>
+        <input type="text" id="f_repo" placeholder="https://github.com/…">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-outline" onclick="cerrarAddModal()">Cancelar</button>
+      <button class="btn btn-accent" onclick="guardarProyecto()">Guardar proyecto</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <script>
+/* ═══════════════════════════════════════
+   DATOS DE PROYECTOS
+═══════════════════════════════════════ */
 
-function abrirPDF(url){
-  document.getElementById("pdfModal").style.display = "block";
-  document.getElementById("visorPDF").src = url;
+// Proyectos base (fijos, en orden correcto: monografía primero)
+const BASE_PROJECTS = [
+  {
+    id: 'base_1',
+    type: 'Monografía',
+    title: 'Rasters y Vectores en GIS',
+    desc: 'Trabajo teórico sobre las estructuras de datos raster y vectorial en sistemas de información geográfica, sus diferencias, aplicaciones y conversiones.',
+    tags: ['GIS', 'Raster', 'Vectores', 'Cartografía'],
+    pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/trabajos-de-informes-en-pdf-/main/monografia_raster_vectores.pdf',
+    repo: ''
+  },
+  {
+    id: 'base_2',
+    type: 'Trabajo Práctico',
+    title: 'Análisis Agrícola del Perú',
+    desc: 'Análisis espacial con R usando datos del Censo Agropecuario peruano. Incluye mapas coropléticos, estadísticas por región y visualizaciones temáticas.',
+    tags: ['R', 'sf', 'ggplot2', 'Censo Agropecuario'],
+    pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/main/estadistica_espacial.pdf',
+    repo: 'https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales'
+  }
+];
+
+const STORAGE_KEY = 'jhon_portfolio_projects_v1';
+
+function cargarProyectosExtra() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  } catch { return []; }
 }
 
-function cerrarPDF(){
-  document.getElementById("pdfModal").style.display = "none";
-  document.getElementById("visorPDF").src = "";
+function todosLosProyectos() {
+  return [...BASE_PROJECTS, ...cargarProyectosExtra()];
 }
 
+/* ═══════════════════════════════════════
+   RENDER DE PROYECTOS
+═══════════════════════════════════════ */
+function renderProyectos() {
+  const lista = document.getElementById('projectsList');
+  const proyectos = todosLosProyectos();
+  lista.innerHTML = '';
+
+  proyectos.forEach((p, i) => {
+    const tagsHTML = (p.tags || [])
+      .map(t => `<span class="tag">${t}</span>`).join('');
+
+    const btnPDF = p.pdf
+      ? `<button class="btn btn-red" onclick="abrirLibro('${p.pdf}','${escHtml(p.title)}')">📖 Ver PDF</button>`
+      : '';
+    const btnRepo = p.repo
+      ? `<a href="${p.repo}" target="_blank" class="btn btn-blue">🔗 Repositorio</a>`
+      : '';
+    const btnEliminar = p.id && !p.id.startsWith('base_')
+      ? `<button class="btn btn-outline" style="margin-left:auto;font-size:11px;color:var(--danger);border-color:var(--danger);" onclick="eliminarProyecto('${p.id}')">✕ Quitar</button>`
+      : '';
+
+    lista.innerHTML += `
+      <div class="project-card" id="pc_${i}">
+        <div class="project-number">${String(i+1).padStart(2,'0')}</div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-type">${escHtml(p.type)}</span>
+          </div>
+          <h3>${escHtml(p.title)}</h3>
+          <p>${escHtml(p.desc)}</p>
+          ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
+          <div class="project-actions">
+            ${btnPDF}
+            ${btnRepo}
+            ${btnEliminar}
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
+function escHtml(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ═══════════════════════════════════════
+   VISOR PDF TIPO LIBRO
+═══════════════════════════════════════ */
+function abrirLibro(url, titulo) {
+  document.getElementById('bookTitleBar').textContent   = titulo || 'Documento';
+  document.getElementById('bookCoverTitle').textContent = titulo || 'Documento';
+  document.getElementById('bookDownloadBtn').href       = url;
+  document.getElementById('bookModal').classList.add('open');
+
+  // mostrar portada + loader
+  document.getElementById('bookCover').classList.remove('hidden');
+  document.getElementById('bookLoader').classList.remove('hidden');
+  document.getElementById('bookIframe').src = '';
+
+  // después de una pequeña animación, cargar el PDF
+  setTimeout(() => {
+    document.getElementById('bookCover').classList.add('hidden');
+
+    const iframe = document.getElementById('bookIframe');
+
+    // Intentamos usar el visor de Google Docs para mayor compatibilidad
+    const viewer = `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(url)}`;
+    iframe.src = viewer;
+
+    iframe.onload = () => {
+      document.getElementById('bookLoader').classList.add('hidden');
+    };
+
+    // Fallback: si el visor de Google no carga en 8s, cargar directo
+    setTimeout(() => {
+      document.getElementById('bookLoader').classList.add('hidden');
+    }, 8000);
+
+  }, 800);
+}
+
+function cerrarLibro() {
+  document.getElementById('bookModal').classList.remove('open');
+  document.getElementById('bookIframe').src = '';
+}
+
+// Cerrar con Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { cerrarLibro(); cerrarAddModal(); }
+});
+
+// Cerrar al clic fuera del contenido
+document.getElementById('bookModal').addEventListener('click', function(e) {
+  if (e.target === this) cerrarLibro();
+});
+document.getElementById('addModal').addEventListener('click', function(e) {
+  if (e.target === this) cerrarAddModal();
+});
+
+/* ═══════════════════════════════════════
+   PANEL AGREGAR PROYECTO
+═══════════════════════════════════════ */
+function abrirAddModal() {
+  document.getElementById('addModal').classList.add('open');
+  document.getElementById('f_title').focus();
+}
+function cerrarAddModal() {
+  document.getElementById('addModal').classList.remove('open');
+  limpiarForm();
+}
+
+function limpiarForm() {
+  ['f_type','f_title','f_desc','f_tags','f_pdf','f_repo']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
+    });
+}
+
+function guardarProyecto() {
+  const title = document.getElementById('f_title').value.trim();
+  const desc  = document.getElementById('f_desc').value.trim();
+
+  if (!title || !desc) {
+    mostrarToast('⚠ Completa el título y la descripción.', true);
+    return;
+  }
+
+  const extra = cargarProyectosExtra();
+
+  const nuevo = {
+    id:   'u_' + Date.now(),
+    type: document.getElementById('f_type').value,
+    title,
+    desc,
+    tags: document.getElementById('f_tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    pdf:  document.getElementById('f_pdf').value.trim(),
+    repo: document.getElementById('f_repo').value.trim()
+  };
+
+  extra.push(nuevo);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
+
+  cerrarAddModal();
+  renderProyectos();
+  mostrarToast('✓ Proyecto agregado correctamente');
+
+  // scroll al nuevo
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.project-card');
+    if (cards.length) cards[cards.length-1].scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 300);
+}
+
+function eliminarProyecto(id) {
+  const extra = cargarProyectosExtra().filter(p => p.id !== id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
+  renderProyectos();
+  mostrarToast('Proyecto eliminado.');
+}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+function mostrarToast(msg, esError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = esError ? 'var(--danger)' : 'var(--accent)';
+  t.style.color       = esError ? 'var(--danger)' : 'var(--accent)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+renderProyectos();
 </script>
-
 </body>
 </html>
