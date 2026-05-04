@@ -17,13 +17,11 @@
   --muted:     #4a6a8a;
   --danger:    #ff4d6d;
   --gold:      #f5c542;
+  --success:   #22c55e;
   --radius:    14px;
 }
-
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -32,8 +30,6 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
-
-/* ── GRID BG ── */
 body::before {
   content: '';
   position: fixed; inset: 0;
@@ -54,14 +50,12 @@ nav {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-
 .nav-logo {
   font-family: 'Playfair Display', serif;
   font-size: 17px;
   color: var(--accent);
   letter-spacing: .5px;
 }
-
 nav a {
   color: var(--muted);
   margin-left: 28px;
@@ -78,7 +72,6 @@ nav a:hover { color: var(--accent); }
   padding: 120px 60px 80px;
   max-width: 860px;
 }
-
 .hero-eyebrow {
   font-size: 12px;
   letter-spacing: 3px;
@@ -86,28 +79,17 @@ nav a:hover { color: var(--accent); }
   color: var(--accent);
   margin-bottom: 20px;
 }
-
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(46px, 7vw, 80px);
   line-height: 1.08;
   font-weight: 700;
 }
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--accent2);
-}
-
-.hero p {
-  margin-top: 22px;
-  color: var(--muted);
-  max-width: 500px;
-  font-size: 15px;
-}
-
+.hero h1 em { font-style: italic; color: var(--accent2); }
+.hero p { margin-top: 22px; color: var(--muted); max-width: 500px; font-size: 15px; }
 .hero-btns { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* ── BOTONES ── */
 .btn {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 11px 20px;
@@ -118,9 +100,9 @@ nav a:hover { color: var(--accent); }
   border: none;
   cursor: pointer;
   transition: opacity .2s, transform .15s;
+  font-family: 'Space Grotesk', sans-serif;
 }
 .btn:hover { opacity: .85; transform: translateY(-1px); }
-
 .btn-accent  { background: var(--accent);  color: var(--bg); }
 .btn-blue    { background: var(--accent2); color: #fff; }
 .btn-red     { background: var(--danger);  color: #fff; }
@@ -131,34 +113,27 @@ nav a:hover { color: var(--accent); }
   color: var(--text);
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm { padding: 7px 14px; font-size: 12px; }
 
-/* ── SECTION ── */
+/* ── SECCIÓN ── */
 .section {
   position: relative; z-index: 1;
   padding: 70px 60px;
 }
-
 .section-header {
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 36px;
   flex-wrap: wrap; gap: 12px;
 }
-
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
   color: var(--text);
 }
-
 .section-title span { color: var(--accent); }
 
-/* ── PROYECTO CARDS ── */
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
+/* ── PROJECT CARDS ── */
+.projects-list { display: flex; flex-direction: column; gap: 20px; }
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -171,7 +146,6 @@ nav a:hover { color: var(--accent); }
   position: relative;
   overflow: hidden;
 }
-
 .project-card::before {
   content: '';
   position: absolute; left: 0; top: 0; bottom: 0;
@@ -186,7 +160,6 @@ nav a:hover { color: var(--accent); }
   border-color: var(--accent);
   box-shadow: 0 0 30px rgba(59,240,197,.08);
 }
-
 .project-number {
   font-family: 'Playfair Display', serif;
   font-size: 42px;
@@ -197,40 +170,46 @@ nav a:hover { color: var(--accent); }
   transition: color .3s;
 }
 .project-card:hover .project-number { color: var(--accent); }
-
 .project-body { flex: 1; }
-
 .project-meta {
   display: flex; align-items: center; gap: 10px;
   margin-bottom: 6px;
   flex-wrap: wrap;
 }
-
 .project-type {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--accent); font-weight: 600;
 }
-
+.project-course {
+  font-size: 11px; color: var(--muted);
+}
+.project-date {
+  font-size: 11px; color: var(--muted);
+}
+.project-grade {
+  font-size: 11px;
+  background: rgba(245,197,66,.15);
+  color: var(--gold);
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,197,66,.25);
+}
 .project-card h3 {
   font-size: 18px; font-weight: 600;
   color: #e8f4ff;
   margin-bottom: 6px;
 }
-
 .project-card p {
   color: var(--muted);
   font-size: 14px;
   margin-bottom: 14px;
 }
-
 .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
-
 .tag {
   font-size: 11px; background: rgba(59,240,197,.1);
   color: var(--accent); padding: 3px 10px;
   border-radius: 20px; border: 1px solid rgba(59,240,197,.2);
 }
-
 .project-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ── SKILLS ── */
@@ -239,7 +218,6 @@ nav a:hover { color: var(--accent); }
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 12px;
 }
-
 .skill-pill {
   background: var(--card);
   border: 1px solid var(--border);
@@ -252,7 +230,7 @@ nav a:hover { color: var(--accent); }
 }
 .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ── CONTACT ── */
+/* ── CONTACTO ── */
 .contact-link {
   display: inline-flex; align-items: center; gap: 8px;
   color: var(--accent2); text-decoration: none;
@@ -270,9 +248,9 @@ footer {
   position: relative; z-index: 1;
 }
 
-/* ══════════════════════════════════════════
+/* ══════════════════════════════════════
    VISOR PDF TIPO LIBRO
-══════════════════════════════════════════ */
+══════════════════════════════════════ */
 #bookModal {
   display: none;
   position: fixed; inset: 0; z-index: 9000;
@@ -283,7 +261,6 @@ footer {
   padding: 20px;
 }
 #bookModal.open { display: flex; }
-
 .book-container {
   position: relative;
   width: min(900px, 95vw);
@@ -292,12 +269,10 @@ footer {
   flex-direction: column;
   animation: bookAppear .4s cubic-bezier(.16,1,.3,1);
 }
-
 @keyframes bookAppear {
   from { opacity:0; transform: scale(.94) translateY(20px); }
   to   { opacity:1; transform: scale(1)   translateY(0); }
 }
-
 .book-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 20px;
@@ -306,35 +281,30 @@ footer {
   border-bottom: none;
   border-radius: var(--radius) var(--radius) 0 0;
 }
-
 .book-title-bar {
   font-size: 13px; font-weight: 600; color: var(--text);
   display: flex; align-items: center; gap: 10px;
 }
-
 .book-dot { width:8px; height:8px; border-radius:50%; }
 .dot-r { background:#ff5f57; }
 .dot-y { background:#febc2e; }
 .dot-g { background:#28c840; }
-
 .book-controls { display: flex; align-items: center; gap: 10px; }
-
 .book-btn {
   background: var(--card); border: 1px solid var(--border);
   color: var(--text); padding: 6px 14px;
   border-radius: 6px; font-size: 12px; cursor: pointer;
+  text-decoration: none;
   transition: border-color .2s;
+  font-family: 'Space Grotesk', sans-serif;
 }
 .book-btn:hover { border-color: var(--accent); color: var(--accent); }
-
 .book-close {
   background: none; border: none; cursor: pointer;
   color: var(--muted); font-size: 20px; line-height: 1;
   transition: color .2s;
 }
 .book-close:hover { color: var(--danger); }
-
-/* El libro visual */
 .book-stage {
   flex: 1;
   background: #1a0e0a;
@@ -346,8 +316,6 @@ footer {
   overflow: hidden;
   position: relative;
 }
-
-/* sombra de libro */
 .book-shadow {
   position: absolute;
   bottom: 20px;
@@ -357,7 +325,6 @@ footer {
   border-radius: 50%;
   filter: blur(18px);
 }
-
 .book-wrap {
   position: relative;
   width: min(680px, 90%);
@@ -367,8 +334,6 @@ footer {
   align-items: stretch;
   justify-content: center;
 }
-
-/* Portada del libro (visible antes de cargar PDF) */
 .book-cover {
   position: absolute; inset: 0;
   background: linear-gradient(135deg, #0a1628, #1a2f50);
@@ -381,12 +346,9 @@ footer {
   transition: opacity .4s;
 }
 .book-cover.hidden { opacity: 0; pointer-events: none; }
-
 .book-cover-icon { font-size: 52px; }
 .book-cover-title { font-size: 16px; font-weight: 600; color: var(--text); text-align: center; padding: 0 24px; }
 .book-cover-sub { font-size: 12px; color: var(--muted); }
-
-/* iframe del PDF */
 .book-iframe-wrap {
   position: absolute; inset: 0;
   border-radius: 4px 12px 12px 4px;
@@ -396,8 +358,6 @@ footer {
     -2px 0 0 rgba(255,255,255,.05),
     inset -6px 0 20px rgba(0,0,0,.4);
 }
-
-/* línea del lomo */
 .book-iframe-wrap::before {
   content: '';
   position: absolute; left: 0; top: 0; bottom: 0;
@@ -407,21 +367,7 @@ footer {
   border-radius: 4px 0 0 4px;
   box-shadow: inset -2px 0 6px rgba(0,0,0,.5);
 }
-
-#bookIframe {
-  width: 100%; height: 100%;
-  border: none;
-  display: block;
-}
-
-.book-page-num {
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--muted);
-  text-align: center;
-}
-
-/* loader */
+#bookIframe { width: 100%; height: 100%; border: none; display: block; }
 .book-loader {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
@@ -440,9 +386,9 @@ footer {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ══════════════════════════════════════════
-   PANEL: AGREGAR PROYECTO
-══════════════════════════════════════════ */
+/* ══════════════════════════════════════
+   MODAL AGREGAR PROYECTO (MEJORADO)
+══════════════════════════════════════ */
 #addModal {
   display: none;
   position: fixed; inset: 0; z-index: 9000;
@@ -453,27 +399,51 @@ footer {
   padding: 20px;
 }
 #addModal.open { display: flex; }
-
 .add-panel {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  width: min(560px, 95vw);
-  max-height: 90vh;
+  width: min(620px, 95vw);
+  max-height: 92vh;
   overflow-y: auto;
   padding: 36px;
   animation: bookAppear .35s cubic-bezier(.16,1,.3,1);
 }
-
 .add-panel h3 {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   margin-bottom: 6px;
 }
-
 .add-panel .sub {
   font-size: 13px; color: var(--muted); margin-bottom: 28px;
 }
+
+/* Pasos del formulario */
+.form-steps {
+  display: flex; gap: 0; margin-bottom: 28px;
+}
+.form-step-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600;
+  padding: 8px 4px;
+  cursor: pointer;
+  letter-spacing: .5px;
+  transition: all .2s;
+}
+.form-step-btn:first-child { border-radius: 8px 0 0 8px; }
+.form-step-btn:last-child { border-radius: 0 8px 8px 0; }
+.form-step-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.form-pane { display: none; }
+.form-pane.active { display: block; }
 
 .form-group { margin-bottom: 18px; }
 .form-group label {
@@ -489,7 +459,7 @@ footer {
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
-  font-family: inherit;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   padding: 10px 14px;
   outline: none;
@@ -498,19 +468,54 @@ footer {
 }
 .form-group input:focus,
 .form-group textarea:focus,
-.form-group select:focus {
-  border-color: var(--accent);
-}
-.form-group textarea { min-height: 80px; }
+.form-group select:focus { border-color: var(--accent); }
+.form-group textarea { min-height: 90px; }
+.form-group select option { background: var(--card); }
 
 .form-row { display: flex; gap: 12px; }
 .form-row .form-group { flex: 1; }
-
 .form-hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
 
-.form-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+/* Bloque conversor de URL */
+.url-converter {
+  background: rgba(59,240,197,.06);
+  border: 1px solid rgba(59,240,197,.2);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+.url-converter-title {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.url-preview {
+  margin-top: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-family: monospace;
+  color: var(--accent);
+  word-break: break-all;
+  display: none;
+}
+.url-preview.visible { display: block; }
 
-/* ── notificación ── */
+/* Estado de validación URL */
+.url-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; margin-top: 8px;
+}
+.url-status.ok { color: var(--success); }
+.url-status.error { color: var(--danger); }
+.url-status.checking { color: var(--muted); }
+
+.form-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: space-between; align-items: center; }
+.form-actions-right { display: flex; gap: 10px; }
+
+/* ── TOAST ── */
 .toast {
   position: fixed; bottom: 30px; right: 30px;
   background: var(--card); border: 1px solid var(--accent);
@@ -531,6 +536,8 @@ footer {
   .section { padding: 50px 20px; }
   .project-card { flex-direction: column; gap: 12px; }
   .project-number { font-size: 28px; }
+  .add-panel { padding: 24px 18px; }
+  .form-row { flex-direction: column; gap: 0; }
 }
 </style>
 </head>
@@ -563,10 +570,7 @@ footer {
     <h2 class="section-title">📁 <span>Proyectos</span></h2>
     <button class="btn btn-outline" style="font-size:12px;" onclick="abrirAddModal()">＋ Nuevo trabajo</button>
   </div>
-
-  <div class="projects-list" id="projectsList">
-    <!-- Los proyectos se renderizan desde JS -->
-  </div>
+  <div class="projects-list" id="projectsList"></div>
 </section>
 
 <!-- SKILLS -->
@@ -613,21 +617,18 @@ footer {
         <span id="bookTitleBar" style="margin-left:8px;">Documento</span>
       </div>
       <div class="book-controls">
+        <a id="bookOpenBtn" href="#" target="_blank" class="book-btn">↗ Abrir en nueva pestaña</a>
         <a id="bookDownloadBtn" href="#" target="_blank" class="book-btn">⬇ Descargar</a>
         <button class="book-close" onclick="cerrarLibro()" title="Cerrar">✕</button>
       </div>
     </div>
-
     <div class="book-stage">
       <div class="book-wrap">
-        <!-- Portada animada -->
         <div class="book-cover" id="bookCover">
           <div class="book-cover-icon">📖</div>
           <div class="book-cover-title" id="bookCoverTitle">Cargando documento…</div>
           <div class="book-cover-sub">Por favor espera</div>
         </div>
-
-        <!-- Iframe con el PDF -->
         <div class="book-iframe-wrap">
           <div class="book-loader" id="bookLoader">
             <div class="spinner"></div>
@@ -638,61 +639,129 @@ footer {
       </div>
       <div class="book-shadow"></div>
     </div>
-
-    <div class="book-page-num" id="bookPageInfo"></div>
   </div>
 </div>
 
-<!-- ═══════════════════════
-  PANEL AGREGAR PROYECTO
-═══════════════════════ -->
+<!-- ═══════════════════════════
+  MODAL AGREGAR PROYECTO
+═══════════════════════════ -->
 <div id="addModal" role="dialog" aria-modal="true">
   <div class="add-panel">
     <h3>＋ Nuevo Trabajo</h3>
-    <p class="sub">Agrega una nueva tarea o proyecto a tu portafolio. Los datos se guardan en el navegador.</p>
+    <p class="sub">Completa la información de tu trabajo. Los datos se guardan en el navegador.</p>
 
-    <div class="form-group">
-      <label>Tipo de trabajo</label>
-      <select id="f_type">
-        <option value="Trabajo Práctico">Trabajo Práctico</option>
-        <option value="Monografía">Monografía</option>
-        <option value="Tarea">Tarea</option>
-        <option value="Proyecto Final">Proyecto Final</option>
-        <option value="Laboratorio">Laboratorio</option>
-        <option value="Otro">Otro</option>
-      </select>
+    <!-- Pasos -->
+    <div class="form-steps">
+      <button class="form-step-btn active" onclick="irPaso(1)">1 · Info básica</button>
+      <button class="form-step-btn" onclick="irPaso(2)">2 · Detalles</button>
+      <button class="form-step-btn" onclick="irPaso(3)">3 · Archivos</button>
     </div>
 
-    <div class="form-group">
-      <label>Título del trabajo *</label>
-      <input type="text" id="f_title" placeholder="Ej: Análisis de Interpolación Espacial">
-    </div>
-
-    <div class="form-group">
-      <label>Descripción corta *</label>
-      <textarea id="f_desc" placeholder="¿De qué trata el trabajo? 1-2 oraciones."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Herramientas / Tags</label>
-      <input type="text" id="f_tags" placeholder="R, ggplot2, sf, Python… (separados por coma)">
-    </div>
-
-    <div class="form-row">
+    <!-- PASO 1: Info básica -->
+    <div class="form-pane active" id="pane1">
       <div class="form-group">
-        <label>URL del PDF (GitHub raw)</label>
-        <input type="text" id="f_pdf" placeholder="https://raw.githubusercontent.com/…">
-        <p class="form-hint">Pega el enlace "raw" del PDF en tu repositorio de GitHub.</p>
+        <label>Tipo de trabajo</label>
+        <select id="f_type">
+          <option value="Trabajo Práctico">Trabajo Práctico</option>
+          <option value="Monografía">Monografía</option>
+          <option value="Tarea">Tarea</option>
+          <option value="Proyecto Final">Proyecto Final</option>
+          <option value="Laboratorio">Laboratorio</option>
+          <option value="Informe">Informe</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>URL del Repositorio</label>
-        <input type="text" id="f_repo" placeholder="https://github.com/…">
+        <label>Título del trabajo *</label>
+        <input type="text" id="f_title" placeholder="Ej: Análisis de Interpolación Espacial en Arequipa">
+      </div>
+      <div class="form-group">
+        <label>Descripción corta *</label>
+        <textarea id="f_desc" placeholder="¿De qué trata el trabajo? 1-2 oraciones que aparecen en la card."></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Curso / Materia</label>
+          <input type="text" id="f_course" placeholder="Ej: Estadística Espacial">
+        </div>
+        <div class="form-group">
+          <label>Fecha de entrega</label>
+          <input type="date" id="f_date">
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: Detalles -->
+    <div class="form-pane" id="pane2">
+      <div class="form-group">
+        <label>Descripción larga (opcional)</label>
+        <textarea id="f_desc_long" style="min-height:120px;" placeholder="Metodología, resultados, conclusiones… Este texto no aparece en la card pero puedes usarlo para tus notas."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Herramientas / Tags</label>
+        <input type="text" id="f_tags" placeholder="R, ggplot2, sf, Python, QGIS… (separados por coma)">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Calificación (opcional)</label>
+          <input type="text" id="f_grade" placeholder="Ej: 18/20 o Aprobado">
+        </div>
+        <div class="form-group">
+          <label>Semestre (opcional)</label>
+          <input type="text" id="f_semester" placeholder="Ej: 2026-I">
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3: Archivos -->
+    <div class="form-pane" id="pane3">
+
+      <!-- CONVERSOR DE URL -->
+      <div class="url-converter">
+        <div class="url-converter-title">🔧 Conversor de URL de GitHub</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">
+          Pega la URL de tu repositorio y escribe el nombre del archivo PDF para generar automáticamente la URL raw necesaria.
+        </p>
+        <div class="form-group" style="margin-bottom:10px;">
+          <label>URL del repositorio GitHub</label>
+          <input type="text" id="f_repo_raw" placeholder="https://github.com/Jhonynanicollab/practica_con_shany.git" oninput="actualizarRaw()">
+          <p class="form-hint">Funciona con o sin .git al final.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:10px;">
+            <label>Nombre del archivo PDF</label>
+            <input type="text" id="f_pdf_name" placeholder="pipelingv2.pdf" oninput="actualizarRaw()">
+          </div>
+          <div class="form-group" style="margin-bottom:10px;">
+            <label>Rama (branch)</label>
+            <input type="text" id="f_branch" placeholder="main" value="main" oninput="actualizarRaw()">
+          </div>
+        </div>
+        <div class="url-preview" id="urlPreview"></div>
+        <button class="btn btn-sm btn-accent" style="margin-top:10px;" onclick="usarURLGenerada()">✓ Usar esta URL</button>
+      </div>
+
+      <div class="form-group">
+        <label>URL final del PDF (raw)</label>
+        <input type="text" id="f_pdf" placeholder="https://raw.githubusercontent.com/…/archivo.pdf" oninput="validarURLPDF()">
+        <p class="form-hint">Puedes pegar directamente una URL raw o usar el conversor de arriba.</p>
+        <div class="url-status" id="pdfStatus" style="display:none;"></div>
+      </div>
+
+      <div class="form-group">
+        <label>URL del repositorio (para el botón "Repositorio")</label>
+        <input type="text" id="f_repo" placeholder="https://github.com/Jhonynanicollab/…">
       </div>
     </div>
 
     <div class="form-actions">
-      <button class="btn btn-outline" onclick="cerrarAddModal()">Cancelar</button>
-      <button class="btn btn-accent" onclick="guardarProyecto()">Guardar proyecto</button>
+      <div id="pasoIndicador" style="font-size:12px;color:var(--muted);">Paso 1 de 3</div>
+      <div class="form-actions-right">
+        <button class="btn btn-outline" onclick="cerrarAddModal()">Cancelar</button>
+        <button class="btn btn-outline" id="btnAnterior" onclick="irPaso(pasoActual-1)" style="display:none;">← Atrás</button>
+        <button class="btn btn-accent" id="btnSiguiente" onclick="irPaso(pasoActual+1)">Siguiente →</button>
+        <button class="btn btn-accent" id="btnGuardar" onclick="guardarProyecto()" style="display:none;">✓ Guardar</button>
+      </div>
     </div>
   </div>
 </div>
@@ -701,11 +770,9 @@ footer {
 <div class="toast" id="toast"></div>
 
 <script>
-/* ═══════════════════════════════════════
-   DATOS DE PROYECTOS
-═══════════════════════════════════════ */
-
-// Proyectos base (fijos, en orden correcto: monografía primero)
+/* ═══════════════════════════════════
+   DATOS BASE
+═══════════════════════════════════ */
 const BASE_PROJECTS = [
   {
     id: 'base_1',
@@ -714,7 +781,11 @@ const BASE_PROJECTS = [
     desc: 'Trabajo teórico sobre las estructuras de datos raster y vectorial en sistemas de información geográfica, sus diferencias, aplicaciones y conversiones.',
     tags: ['GIS', 'Raster', 'Vectores', 'Cartografía'],
     pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/trabajos-de-informes-en-pdf-/main/monografia_raster_vectores.pdf',
-    repo: ''
+    repo: '',
+    course: '',
+    date: '',
+    grade: '',
+    semester: ''
   },
   {
     id: 'base_2',
@@ -723,101 +794,100 @@ const BASE_PROJECTS = [
     desc: 'Análisis espacial con R usando datos del Censo Agropecuario peruano. Incluye mapas coropléticos, estadísticas por región y visualizaciones temáticas.',
     tags: ['R', 'sf', 'ggplot2', 'Censo Agropecuario'],
     pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/main/estadistica_espacial.pdf',
-    repo: 'https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales'
+    repo: 'https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales',
+    course: 'Estadística Espacial',
+    date: '',
+    grade: '',
+    semester: ''
   }
 ];
 
-const STORAGE_KEY = 'jhon_portfolio_projects_v1';
+const STORAGE_KEY = 'jhon_portfolio_projects_v2';
 
-function cargarProyectosExtra() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  } catch { return []; }
+function cargarExtra() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch { return []; }
 }
+function todosLos() { return [...BASE_PROJECTS, ...cargarExtra()]; }
 
-function todosLosProyectos() {
-  return [...BASE_PROJECTS, ...cargarProyectosExtra()];
-}
-
-/* ═══════════════════════════════════════
-   RENDER DE PROYECTOS
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════
+   RENDER
+═══════════════════════════════════ */
 function renderProyectos() {
   const lista = document.getElementById('projectsList');
-  const proyectos = todosLosProyectos();
+  const proyectos = todosLos();
   lista.innerHTML = '';
 
   proyectos.forEach((p, i) => {
-    const tagsHTML = (p.tags || [])
-      .map(t => `<span class="tag">${t}</span>`).join('');
-
+    const tagsHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
     const btnPDF = p.pdf
-      ? `<button class="btn btn-red" onclick="abrirLibro('${p.pdf}','${escHtml(p.title)}')">📖 Ver PDF</button>`
+      ? `<button class="btn btn-red btn-sm" onclick="abrirLibro('${p.pdf}','${esc(p.title)}')">📖 Ver PDF</button>`
       : '';
     const btnRepo = p.repo
-      ? `<a href="${p.repo}" target="_blank" class="btn btn-blue">🔗 Repositorio</a>`
+      ? `<a href="${p.repo}" target="_blank" class="btn btn-blue btn-sm">🔗 Repositorio</a>`
       : '';
-    const btnEliminar = p.id && !p.id.startsWith('base_')
-      ? `<button class="btn btn-outline" style="margin-left:auto;font-size:11px;color:var(--danger);border-color:var(--danger);" onclick="eliminarProyecto('${p.id}')">✕ Quitar</button>`
+    const btnEliminar = (!p.id.startsWith('base_'))
+      ? `<button class="btn btn-outline btn-sm" style="margin-left:auto;color:var(--danger);border-color:var(--danger);" onclick="eliminarProyecto('${p.id}')">✕</button>`
       : '';
 
+    const metaExtra = [
+      p.course ? `<span class="project-course">📚 ${esc(p.course)}</span>` : '',
+      p.semester ? `<span class="project-date">${esc(p.semester)}</span>` : '',
+      p.date ? `<span class="project-date">${formatDate(p.date)}</span>` : '',
+      p.grade ? `<span class="project-grade">★ ${esc(p.grade)}</span>` : ''
+    ].filter(Boolean).join('');
+
     lista.innerHTML += `
-      <div class="project-card" id="pc_${i}">
+      <div class="project-card">
         <div class="project-number">${String(i+1).padStart(2,'0')}</div>
         <div class="project-body">
           <div class="project-meta">
-            <span class="project-type">${escHtml(p.type)}</span>
+            <span class="project-type">${esc(p.type)}</span>
+            ${metaExtra}
           </div>
-          <h3>${escHtml(p.title)}</h3>
-          <p>${escHtml(p.desc)}</p>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.desc)}</p>
           ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
           <div class="project-actions">
-            ${btnPDF}
-            ${btnRepo}
-            ${btnEliminar}
+            ${btnPDF}${btnRepo}${btnEliminar}
           </div>
         </div>
       </div>`;
   });
 }
 
-function escHtml(s) {
-  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
-/* ═══════════════════════════════════════
-   VISOR PDF TIPO LIBRO
-═══════════════════════════════════════ */
+function formatDate(d) {
+  if (!d) return '';
+  try {
+    const [y,m,day] = d.split('-');
+    const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    return `${parseInt(day)} ${meses[parseInt(m)-1]} ${y}`;
+  } catch { return d; }
+}
+
+/* ═══════════════════════════════════
+   VISOR PDF
+═══════════════════════════════════ */
 function abrirLibro(url, titulo) {
   document.getElementById('bookTitleBar').textContent   = titulo || 'Documento';
   document.getElementById('bookCoverTitle').textContent = titulo || 'Documento';
-  document.getElementById('bookDownloadBtn').href       = url;
+  document.getElementById('bookDownloadBtn').href = url;
+  document.getElementById('bookOpenBtn').href     = url;
   document.getElementById('bookModal').classList.add('open');
-
-  // mostrar portada + loader
   document.getElementById('bookCover').classList.remove('hidden');
   document.getElementById('bookLoader').classList.remove('hidden');
   document.getElementById('bookIframe').src = '';
 
-  // después de una pequeña animación, cargar el PDF
   setTimeout(() => {
     document.getElementById('bookCover').classList.add('hidden');
-
     const iframe = document.getElementById('bookIframe');
-
-    // Intentamos usar el visor de Google Docs para mayor compatibilidad
-    const viewer = `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(url)}`;
-    iframe.src = viewer;
-
-    iframe.onload = () => {
-      document.getElementById('bookLoader').classList.add('hidden');
-    };
-
-    // Fallback: si el visor de Google no carga en 8s, cargar directo
-    setTimeout(() => {
-      document.getElementById('bookLoader').classList.add('hidden');
-    }, 8000);
-
+    iframe.src = `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(url)}`;
+    iframe.onload = () => document.getElementById('bookLoader').classList.add('hidden');
+    setTimeout(() => document.getElementById('bookLoader').classList.add('hidden'), 8000);
   }, 800);
 }
 
@@ -826,68 +896,160 @@ function cerrarLibro() {
   document.getElementById('bookIframe').src = '';
 }
 
-// Cerrar con Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { cerrarLibro(); cerrarAddModal(); }
-});
+/* ═══════════════════════════════════
+   FORMULARIO POR PASOS
+═══════════════════════════════════ */
+let pasoActual = 1;
 
-// Cerrar al clic fuera del contenido
-document.getElementById('bookModal').addEventListener('click', function(e) {
-  if (e.target === this) cerrarLibro();
-});
-document.getElementById('addModal').addEventListener('click', function(e) {
-  if (e.target === this) cerrarAddModal();
-});
+function irPaso(n) {
+  if (n < 1 || n > 3) return;
+  document.querySelectorAll('.form-pane').forEach((p,i) => {
+    p.classList.toggle('active', i+1 === n);
+  });
+  document.querySelectorAll('.form-step-btn').forEach((b,i) => {
+    b.classList.toggle('active', i+1 === n);
+  });
+  pasoActual = n;
+  document.getElementById('pasoIndicador').textContent = `Paso ${n} de 3`;
+  document.getElementById('btnAnterior').style.display = n > 1 ? 'inline-flex' : 'none';
+  document.getElementById('btnSiguiente').style.display = n < 3 ? 'inline-flex' : 'none';
+  document.getElementById('btnGuardar').style.display = n === 3 ? 'inline-flex' : 'none';
+}
 
-/* ═══════════════════════════════════════
-   PANEL AGREGAR PROYECTO
-═══════════════════════════════════════ */
 function abrirAddModal() {
   document.getElementById('addModal').classList.add('open');
-  document.getElementById('f_title').focus();
+  irPaso(1);
+  setTimeout(() => document.getElementById('f_title').focus(), 100);
 }
+
 function cerrarAddModal() {
   document.getElementById('addModal').classList.remove('open');
   limpiarForm();
 }
 
 function limpiarForm() {
-  ['f_type','f_title','f_desc','f_tags','f_pdf','f_repo']
-    .forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
-    });
+  const campos = ['f_title','f_desc','f_desc_long','f_tags','f_pdf','f_repo',
+                  'f_course','f_date','f_grade','f_semester',
+                  'f_repo_raw','f_pdf_name','f_branch'];
+  campos.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = id === 'f_branch' ? 'main' : '';
+  });
+  document.getElementById('urlPreview').classList.remove('visible');
+  document.getElementById('urlPreview').textContent = '';
+  document.getElementById('pdfStatus').style.display = 'none';
+  irPaso(1);
 }
 
+/* ═══════════════════════════════════
+   CONVERSOR DE URL GITHUB
+═══════════════════════════════════ */
+function githubToRaw(repoUrl, fileName, branch) {
+  if (!repoUrl || !fileName) return '';
+  branch = branch || 'main';
+  let clean = repoUrl.trim()
+    .replace(/\.git$/, '')
+    .replace(/\/$/, '');
+
+  // Extraer user/repo de cualquier formato
+  const match = clean.match(/github\.com\/([^\/]+\/[^\/]+)/);
+  if (!match) return '';
+
+  return `https://raw.githubusercontent.com/${match[1]}/${branch}/${fileName.trim()}`;
+}
+
+function actualizarRaw() {
+  const repo   = document.getElementById('f_repo_raw').value;
+  const file   = document.getElementById('f_pdf_name').value;
+  const branch = document.getElementById('f_branch').value;
+  const raw = githubToRaw(repo, file, branch);
+  const preview = document.getElementById('urlPreview');
+  if (raw) {
+    preview.textContent = raw;
+    preview.classList.add('visible');
+  } else {
+    preview.classList.remove('visible');
+  }
+}
+
+function usarURLGenerada() {
+  const repo   = document.getElementById('f_repo_raw').value;
+  const file   = document.getElementById('f_pdf_name').value;
+  const branch = document.getElementById('f_branch').value;
+  const raw = githubToRaw(repo, file, branch);
+
+  if (!raw) { mostrarToast('⚠ Completa el repo y el nombre del archivo.', true); return; }
+
+  document.getElementById('f_pdf').value = raw;
+  mostrarToast('✓ URL copiada al campo de PDF');
+
+  // También copiar URL base del repo si el campo está vacío
+  if (!document.getElementById('f_repo').value) {
+    const repoClean = repo.replace(/\.git$/, '').trim();
+    document.getElementById('f_repo').value = repoClean;
+  }
+
+  validarURLPDF();
+}
+
+/* Validación visual de la URL del PDF */
+function validarURLPDF() {
+  const url = document.getElementById('f_pdf').value.trim();
+  const status = document.getElementById('pdfStatus');
+  if (!url) { status.style.display = 'none'; return; }
+
+  const esRaw = url.includes('raw.githubusercontent.com');
+  const esPDF = url.endsWith('.pdf');
+
+  status.style.display = 'inline-flex';
+  if (esRaw && esPDF) {
+    status.className = 'url-status ok';
+    status.textContent = '✓ URL raw válida';
+  } else if (!esRaw) {
+    status.className = 'url-status error';
+    status.textContent = '⚠ Debe ser una URL raw de GitHub (raw.githubusercontent.com)';
+  } else {
+    status.className = 'url-status checking';
+    status.textContent = '○ Verifica que termine en .pdf';
+  }
+}
+
+/* ═══════════════════════════════════
+   GUARDAR PROYECTO
+═══════════════════════════════════ */
 function guardarProyecto() {
   const title = document.getElementById('f_title').value.trim();
   const desc  = document.getElementById('f_desc').value.trim();
-
   if (!title || !desc) {
-    mostrarToast('⚠ Completa el título y la descripción.', true);
+    irPaso(1);
+    mostrarToast('⚠ Completa el título y la descripción (Paso 1).', true);
     return;
   }
 
-  const extra = cargarProyectosExtra();
-
+  const extra = cargarExtra();
   const nuevo = {
-    id:   'u_' + Date.now(),
-    type: document.getElementById('f_type').value,
+    id:        'u_' + Date.now(),
+    type:      document.getElementById('f_type').value,
     title,
     desc,
-    tags: document.getElementById('f_tags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    pdf:  document.getElementById('f_pdf').value.trim(),
-    repo: document.getElementById('f_repo').value.trim()
+    desc_long: document.getElementById('f_desc_long').value.trim(),
+    tags:      document.getElementById('f_tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    pdf:       document.getElementById('f_pdf').value.trim(),
+    repo:      document.getElementById('f_repo').value.trim(),
+    course:    document.getElementById('f_course').value.trim(),
+    date:      document.getElementById('f_date').value,
+    grade:     document.getElementById('f_grade').value.trim(),
+    semester:  document.getElementById('f_semester').value.trim()
   };
 
   extra.push(nuevo);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
-
   cerrarAddModal();
   renderProyectos();
-  mostrarToast('✓ Proyecto agregado correctamente');
+  mostrarToast('✓ Proyecto guardado correctamente');
 
-  // scroll al nuevo
   setTimeout(() => {
     const cards = document.querySelectorAll('.project-card');
     if (cards.length) cards[cards.length-1].scrollIntoView({ behavior:'smooth', block:'center' });
@@ -895,27 +1057,41 @@ function guardarProyecto() {
 }
 
 function eliminarProyecto(id) {
-  const extra = cargarProyectosExtra().filter(p => p.id !== id);
+  if (!confirm('¿Eliminar este proyecto?')) return;
+  const extra = cargarExtra().filter(p => p.id !== id);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
   renderProyectos();
   mostrarToast('Proyecto eliminado.');
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════
    TOAST
-═══════════════════════════════════════ */
+═══════════════════════════════════ */
 function mostrarToast(msg, esError) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.style.borderColor = esError ? 'var(--danger)' : 'var(--accent)';
   t.style.color       = esError ? 'var(--danger)' : 'var(--accent)';
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════
+   EVENTOS GLOBALES
+═══════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { cerrarLibro(); cerrarAddModal(); }
+});
+document.getElementById('bookModal').addEventListener('click', function(e) {
+  if (e.target === this) cerrarLibro();
+});
+document.getElementById('addModal').addEventListener('click', function(e) {
+  if (e.target === this) cerrarAddModal();
+});
+
+/* ═══════════════════════════════════
    INIT
-═══════════════════════════════════════ */
+═══════════════════════════════════ */
 renderProyectos();
 </script>
 </body>
