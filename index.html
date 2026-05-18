@@ -3,1096 +3,446 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio — Estadística Espacial</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:        #080d14;
-  --bg2:       #0d1520;
-  --card:      #111c2b;
-  --border:    #1e3048;
-  --accent:    #3bf0c5;
-  --accent2:   #1d8cff;
-  --text:      #cfe4ff;
-  --muted:     #4a6a8a;
-  --danger:    #ff4d6d;
-  --gold:      #f5c542;
-  --success:   #22c55e;
-  --radius:    14px;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,48,72,.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,48,72,.35) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 60px;
-  background: rgba(8,13,20,.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
-  color: var(--accent);
-  letter-spacing: .5px;
-}
-nav a {
-  color: var(--muted);
-  margin-left: 28px;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: .5px;
-  transition: color .2s;
-}
-nav a:hover { color: var(--accent); }
-
-/* ── HERO ── */
-.hero {
-  position: relative; z-index: 1;
-  padding: 120px 60px 80px;
-  max-width: 860px;
-}
-.hero-eyebrow {
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(46px, 7vw, 80px);
-  line-height: 1.08;
-  font-weight: 700;
-}
-.hero h1 em { font-style: italic; color: var(--accent2); }
-.hero p { margin-top: 22px; color: var(--muted); max-width: 500px; font-size: 15px; }
-.hero-btns { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* ── BOTONES ── */
-.btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 11px 20px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: opacity .2s, transform .15s;
-  font-family: 'Space Grotesk', sans-serif;
-}
-.btn:hover { opacity: .85; transform: translateY(-1px); }
-.btn-accent  { background: var(--accent);  color: var(--bg); }
-.btn-blue    { background: var(--accent2); color: #fff; }
-.btn-red     { background: var(--danger);  color: #fff; }
-.btn-gold    { background: var(--gold);    color: var(--bg); }
-.btn-outline {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-.btn-sm { padding: 7px 14px; font-size: 12px; }
-
-/* ── SECCIÓN ── */
-.section {
-  position: relative; z-index: 1;
-  padding: 70px 60px;
-}
-.section-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 36px;
-  flex-wrap: wrap; gap: 12px;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  color: var(--text);
-}
-.section-title span { color: var(--accent); }
-
-/* ── PROJECT CARDS ── */
-.projects-list { display: flex; flex-direction: column; gap: 20px; }
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 32px;
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-  transition: border-color .25s, box-shadow .25s;
-  position: relative;
-  overflow: hidden;
-}
-.project-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform .3s;
-}
-.project-card:hover::before { transform: scaleY(1); }
-.project-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 30px rgba(59,240,197,.08);
-}
-.project-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--border);
-  line-height: 1;
-  min-width: 52px;
-  transition: color .3s;
-}
-.project-card:hover .project-number { color: var(--accent); }
-.project-body { flex: 1; }
-.project-meta {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-}
-.project-type {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--accent); font-weight: 600;
-}
-.project-course {
-  font-size: 11px; color: var(--muted);
-}
-.project-date {
-  font-size: 11px; color: var(--muted);
-}
-.project-grade {
-  font-size: 11px;
-  background: rgba(245,197,66,.15);
-  color: var(--gold);
-  padding: 2px 8px;
-  border-radius: 20px;
-  border: 1px solid rgba(245,197,66,.25);
-}
-.project-card h3 {
-  font-size: 18px; font-weight: 600;
-  color: #e8f4ff;
-  margin-bottom: 6px;
-}
-.project-card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 14px;
-}
-.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
-.tag {
-  font-size: 11px; background: rgba(59,240,197,.1);
-  color: var(--accent); padding: 3px 10px;
-  border-radius: 20px; border: 1px solid rgba(59,240,197,.2);
-}
-.project-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* ── SKILLS ── */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 12px;
-}
-.skill-pill {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 500;
-  transition: border-color .2s, color .2s;
-}
-.skill-pill:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ── CONTACTO ── */
-.contact-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--accent2); text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: border-color .2s;
-}
-.contact-link:hover { border-color: var(--accent2); }
-
-/* ── FOOTER ── */
-footer {
-  text-align: center; padding: 40px;
-  color: var(--muted); font-size: 13px;
-  border-top: 1px solid var(--border);
-  position: relative; z-index: 1;
-}
-
-/* ══════════════════════════════════════
-   VISOR PDF TIPO LIBRO
-══════════════════════════════════════ */
-#bookModal {
-  display: none;
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(4,9,16,.92);
-  backdrop-filter: blur(10px);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-#bookModal.open { display: flex; }
-.book-container {
-  position: relative;
-  width: min(900px, 95vw);
-  height: min(620px, 90vh);
-  display: flex;
-  flex-direction: column;
-  animation: bookAppear .4s cubic-bezier(.16,1,.3,1);
-}
-@keyframes bookAppear {
-  from { opacity:0; transform: scale(.94) translateY(20px); }
-  to   { opacity:1; transform: scale(1)   translateY(0); }
-}
-.book-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 20px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-bottom: none;
-  border-radius: var(--radius) var(--radius) 0 0;
-}
-.book-title-bar {
-  font-size: 13px; font-weight: 600; color: var(--text);
-  display: flex; align-items: center; gap: 10px;
-}
-.book-dot { width:8px; height:8px; border-radius:50%; }
-.dot-r { background:#ff5f57; }
-.dot-y { background:#febc2e; }
-.dot-g { background:#28c840; }
-.book-controls { display: flex; align-items: center; gap: 10px; }
-.book-btn {
-  background: var(--card); border: 1px solid var(--border);
-  color: var(--text); padding: 6px 14px;
-  border-radius: 6px; font-size: 12px; cursor: pointer;
-  text-decoration: none;
-  transition: border-color .2s;
-  font-family: 'Space Grotesk', sans-serif;
-}
-.book-btn:hover { border-color: var(--accent); color: var(--accent); }
-.book-close {
-  background: none; border: none; cursor: pointer;
-  color: var(--muted); font-size: 20px; line-height: 1;
-  transition: color .2s;
-}
-.book-close:hover { color: var(--danger); }
-.book-stage {
-  flex: 1;
-  background: #1a0e0a;
-  border: 1px solid var(--border);
-  border-radius: 0 0 var(--radius) var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-.book-shadow {
-  position: absolute;
-  bottom: 20px;
-  width: 70%;
-  height: 30px;
-  background: rgba(0,0,0,.5);
-  border-radius: 50%;
-  filter: blur(18px);
-}
-.book-wrap {
-  position: relative;
-  width: min(680px, 90%);
-  height: calc(100% - 40px);
-  perspective: 1800px;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
-.book-cover {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, #0a1628, #1a2f50);
-  border-radius: 4px 12px 12px 4px;
-  border: 1px solid var(--border);
-  box-shadow: -8px 8px 40px rgba(0,0,0,.6), inset -2px 0 8px rgba(0,0,0,.3);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 12px; z-index: 2;
-  transition: opacity .4s;
-}
-.book-cover.hidden { opacity: 0; pointer-events: none; }
-.book-cover-icon { font-size: 52px; }
-.book-cover-title { font-size: 16px; font-weight: 600; color: var(--text); text-align: center; padding: 0 24px; }
-.book-cover-sub { font-size: 12px; color: var(--muted); }
-.book-iframe-wrap {
-  position: absolute; inset: 0;
-  border-radius: 4px 12px 12px 4px;
-  overflow: hidden;
-  box-shadow:
-    -8px 8px 40px rgba(0,0,0,.7),
-    -2px 0 0 rgba(255,255,255,.05),
-    inset -6px 0 20px rgba(0,0,0,.4);
-}
-.book-iframe-wrap::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 14px;
-  background: linear-gradient(90deg, #050b14, #0d1a2e, #050b14);
-  z-index: 5;
-  border-radius: 4px 0 0 4px;
-  box-shadow: inset -2px 0 6px rgba(0,0,0,.5);
-}
-#bookIframe { width: 100%; height: 100%; border: none; display: block; }
-.book-loader {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 14px; z-index: 10;
-  background: rgba(8,13,20,.7);
-  border-radius: 4px 12px 12px 4px;
-}
-.book-loader.hidden { display: none; }
-.spinner {
-  width: 36px; height: 36px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin .8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ══════════════════════════════════════
-   MODAL AGREGAR PROYECTO (MEJORADO)
-══════════════════════════════════════ */
-#addModal {
-  display: none;
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(4,9,16,.88);
-  backdrop-filter: blur(10px);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-#addModal.open { display: flex; }
-.add-panel {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  width: min(620px, 95vw);
-  max-height: 92vh;
-  overflow-y: auto;
-  padding: 36px;
-  animation: bookAppear .35s cubic-bezier(.16,1,.3,1);
-}
-.add-panel h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin-bottom: 6px;
-}
-.add-panel .sub {
-  font-size: 13px; color: var(--muted); margin-bottom: 28px;
-}
-
-/* Pasos del formulario */
-.form-steps {
-  display: flex; gap: 0; margin-bottom: 28px;
-}
-.form-step-btn {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px; font-weight: 600;
-  padding: 8px 4px;
-  cursor: pointer;
-  letter-spacing: .5px;
-  transition: all .2s;
-}
-.form-step-btn:first-child { border-radius: 8px 0 0 8px; }
-.form-step-btn:last-child { border-radius: 0 8px 8px 0; }
-.form-step-btn.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg);
-}
-
-.form-pane { display: none; }
-.form-pane.active { display: block; }
-
-.form-group { margin-bottom: 18px; }
-.form-group label {
-  display: block; font-size: 12px; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 7px;
-  font-weight: 600;
-}
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  padding: 10px 14px;
-  outline: none;
-  transition: border-color .2s;
-  resize: vertical;
-}
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus { border-color: var(--accent); }
-.form-group textarea { min-height: 90px; }
-.form-group select option { background: var(--card); }
-
-.form-row { display: flex; gap: 12px; }
-.form-row .form-group { flex: 1; }
-.form-hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
-
-/* Bloque conversor de URL */
-.url-converter {
-  background: rgba(59,240,197,.06);
-  border: 1px solid rgba(59,240,197,.2);
-  border-radius: 10px;
-  padding: 18px;
-  margin-bottom: 18px;
-}
-.url-converter-title {
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 14px;
-}
-.url-preview {
-  margin-top: 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 12px;
-  font-family: monospace;
-  color: var(--accent);
-  word-break: break-all;
-  display: none;
-}
-.url-preview.visible { display: block; }
-
-/* Estado de validación URL */
-.url-status {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; margin-top: 8px;
-}
-.url-status.ok { color: var(--success); }
-.url-status.error { color: var(--danger); }
-.url-status.checking { color: var(--muted); }
-
-.form-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: space-between; align-items: center; }
-.form-actions-right { display: flex; gap: 10px; }
-
-/* ── TOAST ── */
-.toast {
-  position: fixed; bottom: 30px; right: 30px;
-  background: var(--card); border: 1px solid var(--accent);
-  color: var(--accent); border-radius: 10px;
-  padding: 14px 22px; font-size: 14px; font-weight: 500;
-  z-index: 9999; opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .3s, transform .3s;
-  pointer-events: none;
-}
-.toast.show { opacity: 1; transform: translateY(0); }
-
-/* ── RESPONSIVO ── */
-@media(max-width: 700px) {
-  nav { padding: 14px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 70px 20px 50px; }
-  .section { padding: 50px 20px; }
-  .project-card { flex-direction: column; gap: 12px; }
-  .project-number { font-size: 28px; }
-  .add-panel { padding: 24px 18px; }
-  .form-row { flex-direction: column; gap: 0; }
-}
-</style>
+<title>Portafolio — Estadística Espacial · Jhon cristhian gonzales quispe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Jhon Gonzales</div>
+<nav id="navbar">
+  <div class="nav-logo">
+    <span class="logo-dot"></span>
+    Jhon cristhian gonzales quispe
+  </div>
   <div class="nav-links">
     <a href="#proyectos">Proyectos</a>
     <a href="#skills">Habilidades</a>
     <a href="#contacto">Contacto</a>
   </div>
+  <div class="nav-tag">Est. Espacial · 2026</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Portafolio Académico · 2026</p>
-  <h1>Estadística<br><em>Espacial</em></h1>
-  <p>Análisis geoespacial, modelamiento estadístico y visualización de datos aplicados al contexto peruano.</p>
-  <div class="hero-btns">
-    <a href="#proyectos" class="btn btn-accent">Ver proyectos</a>
-    <button class="btn btn-outline" onclick="abrirAddModal()">＋ Agregar trabajo</button>
+  <div class="hero-inner">
+    <div class="hero-badge">Portafolio Académico</div>
+    <h1 class="hero-title">
+      Estadística<br>
+      <em>Espacial</em>
+    </h1>
+    <p class="hero-sub">
+      Análisis geoespacial, modelamiento estadístico<br>y visualización de datos — contexto peruano.
+    </p>
+    <a href="#proyectos" class="hero-cta">
+      <span>Explorar proyectos</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-orb orb-1" aria-hidden="true"></div>
+  <div class="hero-orb orb-2" aria-hidden="true"></div>
 </section>
 
 <!-- PROYECTOS -->
 <section id="proyectos" class="section">
   <div class="section-header">
-    <h2 class="section-title">📁 <span>Proyectos</span></h2>
-    <button class="btn btn-outline" style="font-size:12px;" onclick="abrirAddModal()">＋ Nuevo trabajo</button>
+    <div class="section-label">Trabajos</div>
+    <h2 class="section-title">Proyectos <span>académicos</span></h2>
   </div>
-  <div class="projects-list" id="projectsList"></div>
+  <div class="projects-list" id="projectsList">
+    <!-- cargado por JS desde projects.json -->
+    <div class="loading-state">
+      <div class="loading-spinner"></div>
+      <span>Cargando proyectos…</span>
+    </div>
+  </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="section">
-  <h2 class="section-title" style="margin-bottom:28px;">📊 <span>Habilidades</span></h2>
+<section id="skills" class="section section-alt">
+  <div class="section-header">
+    <div class="section-label">Stack</div>
+    <h2 class="section-title">Herramientas <span>&amp; habilidades</span></h2>
+  </div>
   <div class="skills-grid">
-    <div class="skill-pill">R</div>
-    <div class="skill-pill">Python</div>
-    <div class="skill-pill">GIS</div>
-    <div class="skill-pill">GeoPandas</div>
-    <div class="skill-pill">SQL</div>
-    <div class="skill-pill">sf (R)</div>
-    <div class="skill-pill">ggplot2</div>
-    <div class="skill-pill">QGIS</div>
-    <div class="skill-pill">Data Viz</div>
-    <div class="skill-pill">Estadística</div>
+    <div class="skill-card" data-level="expert">
+      <span class="skill-icon">📊</span>
+      <span class="skill-name">R</span>
+    </div>
+    <div class="skill-card" data-level="expert">
+      <span class="skill-icon">🐍</span>
+      <span class="skill-name">Python</span>
+    </div>
+    <div class="skill-card" data-level="advanced">
+      <span class="skill-icon">🗺</span>
+      <span class="skill-name">QGIS</span>
+    </div>
+    <div class="skill-card" data-level="advanced">
+      <span class="skill-icon">🌐</span>
+      <span class="skill-name">GIS</span>
+    </div>
+    <div class="skill-card" data-level="advanced">
+      <span class="skill-icon">📦</span>
+      <span class="skill-name">GeoPandas</span>
+    </div>
+    <div class="skill-card" data-level="advanced">
+      <span class="skill-icon">📐</span>
+      <span class="skill-name">sf (R)</span>
+    </div>
+    <div class="skill-card" data-level="intermediate">
+      <span class="skill-icon">🎨</span>
+      <span class="skill-name">ggplot2</span>
+    </div>
+    <div class="skill-card" data-level="intermediate">
+      <span class="skill-icon">🗄</span>
+      <span class="skill-name">SQL</span>
+    </div>
+    <div class="skill-card" data-level="intermediate">
+      <span class="skill-icon">📈</span>
+      <span class="skill-name">Data Viz</span>
+    </div>
+    <div class="skill-card" data-level="intermediate">
+      <span class="skill-icon">📉</span>
+      <span class="skill-name">Estadística</span>
+    </div>
   </div>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto" class="section">
-  <h2 class="section-title" style="margin-bottom:20px;">📬 <span>Contacto</span></h2>
-  <p style="color:var(--muted); margin-bottom:16px;">¿Quieres saber más sobre algún proyecto o colaborar?</p>
-  <a href="https://github.com/Jhonynanicollab" target="_blank" class="contact-link">
-    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-    github.com/Jhonynanicollab
-  </a>
+  <div class="section-header">
+    <div class="section-label">Links</div>
+    <h2 class="section-title">Contacto</h2>
+  </div>
+  <div class="contact-block">
+    <p class="contact-sub">¿Quieres saber más sobre algún proyecto o colaborar?</p>
+    <a href="https://github.com/Jhonynanicollab" target="_blank" class="contact-card">
+      <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      <div class="contact-card-text">
+        <span class="contact-card-label">GitHub</span>
+        <span class="contact-card-handle">@Jhonynanicollab</span>
+      </div>
+      <svg class="contact-arrow" viewBox="0 0 16 16" fill="none" width="14" height="14">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
 </section>
 
 <footer>
-  © 2026 Jhon Cristhian Gonzales Quispe · Portafolio de Estadística Espacial
+  <div class="footer-inner">
+    <span>© 2026 Jhon Cristhian Gonzales Quispe</span>
+    <span class="footer-sep">·</span>
+    <span>Estadística Espacial</span>
+  </div>
 </footer>
 
-<!-- ═══════════════════════
-  VISOR PDF TIPO LIBRO
-═══════════════════════ -->
-<div id="bookModal" role="dialog" aria-modal="true">
-  <div class="book-container">
-    <div class="book-header">
-      <div class="book-title-bar">
-        <span class="book-dot dot-r"></span>
-        <span class="book-dot dot-y"></span>
-        <span class="book-dot dot-g"></span>
-        <span id="bookTitleBar" style="margin-left:8px;">Documento</span>
-      </div>
-      <div class="book-controls">
-        <a id="bookOpenBtn" href="#" target="_blank" class="book-btn">↗ Abrir en nueva pestaña</a>
-        <a id="bookDownloadBtn" href="#" target="_blank" class="book-btn">⬇ Descargar</a>
-        <button class="book-close" onclick="cerrarLibro()" title="Cerrar">✕</button>
-      </div>
-    </div>
-    <div class="book-stage">
-      <div class="book-wrap">
-        <div class="book-cover" id="bookCover">
-          <div class="book-cover-icon">📖</div>
-          <div class="book-cover-title" id="bookCoverTitle">Cargando documento…</div>
-          <div class="book-cover-sub">Por favor espera</div>
+<!-- ══════════════════════════════════════
+  VISOR PDF MEJORADO
+══════════════════════════════════════ -->
+<div id="pdfModal" role="dialog" aria-modal="true" aria-label="Visor de documento">
+  <div class="pdf-overlay" onclick="cerrarPDF()"></div>
+  <div class="pdf-panel">
+
+    <!-- Header -->
+    <div class="pdf-header">
+      <div class="pdf-header-left">
+        <div class="pdf-dots" aria-hidden="true">
+          <span class="pdot pdot-r" onclick="cerrarPDF()" title="Cerrar"></span>
+          <span class="pdot pdot-y"></span>
+          <span class="pdot pdot-g"></span>
         </div>
-        <div class="book-iframe-wrap">
-          <div class="book-loader" id="bookLoader">
-            <div class="spinner"></div>
-            <span style="font-size:13px;color:var(--muted);">Abriendo documento…</span>
-          </div>
-          <iframe id="bookIframe" title="Visor de documento"></iframe>
+        <div class="pdf-title-bar">
+          <span class="pdf-doc-icon">📄</span>
+          <span id="pdfTitleText">Documento</span>
         </div>
       </div>
-      <div class="book-shadow"></div>
+      <div class="pdf-header-right">
+        <a id="pdfOpenBtn" href="#" target="_blank" class="pdf-action-btn" title="Abrir en nueva pestaña">
+          <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+            <path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9M10 2h4v4M14 2 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Nueva pestaña
+        </a>
+        <a id="pdfDownloadBtn" href="#" target="_blank" class="pdf-action-btn" title="Descargar PDF">
+          <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+            <path d="M8 2v8M5 7l3 3 3-3M2 12v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Descargar
+        </a>
+        <button class="pdf-close-btn" onclick="cerrarPDF()" title="Cerrar (Esc)">
+          <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+            <path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- Selector de modo -->
+    <div class="pdf-mode-bar">
+      <button class="mode-btn active" id="modeGoogle" onclick="setMode('google')">
+        <svg viewBox="0 0 16 16" fill="none" width="12" height="12"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 5h6M5 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Visor Google
+      </button>
+      <button class="mode-btn" id="modeDirect" onclick="setMode('direct')">
+        <svg viewBox="0 0 16 16" fill="none" width="12" height="12"><path d="M8 2C4.686 2 2 4.686 2 8s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z" stroke="currentColor" stroke-width="1.4"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Nativo
+      </button>
+      <div class="mode-hint" id="modeHint">Si el visor no carga, prueba el modo Nativo →</div>
+    </div>
+
+    <!-- Zona del PDF -->
+    <div class="pdf-stage">
+
+      <!-- Estado: loading -->
+      <div class="pdf-loading" id="pdfLoading">
+        <div class="pdf-loading-spinner"></div>
+        <p class="pdf-loading-text">Cargando documento…</p>
+        <p class="pdf-loading-sub">Esto puede tardar unos segundos</p>
+      </div>
+
+      <!-- Estado: error -->
+      <div class="pdf-error hidden" id="pdfError">
+        <div class="pdf-error-icon">⚠️</div>
+        <p class="pdf-error-title">No se pudo cargar el documento</p>
+        <p class="pdf-error-sub">El archivo puede estar privado, no existir o el visor no tiene permiso.</p>
+        <div class="pdf-error-actions">
+          <button class="pdf-err-btn" onclick="setMode('direct')">Intentar modo Nativo</button>
+          <a id="pdfErrorOpen" href="#" target="_blank" class="pdf-err-btn pdf-err-btn-accent">Abrir en nueva pestaña</a>
+        </div>
+      </div>
+
+      <!-- iframe principal -->
+      <iframe
+        id="pdfIframe"
+        title="Visor de documento PDF"
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        class="hidden"
+      ></iframe>
+
+    </div>
+
+    <!-- Footer con metadata -->
+    <div class="pdf-footer">
+      <span id="pdfMetaType" class="pdf-meta-chip"></span>
+      <span id="pdfMetaTags" class="pdf-meta-tags"></span>
+    </div>
+
   </div>
 </div>
-
-<!-- ═══════════════════════════
-  MODAL AGREGAR PROYECTO
-═══════════════════════════ -->
-<div id="addModal" role="dialog" aria-modal="true">
-  <div class="add-panel">
-    <h3>＋ Nuevo Trabajo</h3>
-    <p class="sub">Completa la información de tu trabajo. Los datos se guardan en el navegador.</p>
-
-    <!-- Pasos -->
-    <div class="form-steps">
-      <button class="form-step-btn active" onclick="irPaso(1)">1 · Info básica</button>
-      <button class="form-step-btn" onclick="irPaso(2)">2 · Detalles</button>
-      <button class="form-step-btn" onclick="irPaso(3)">3 · Archivos</button>
-    </div>
-
-    <!-- PASO 1: Info básica -->
-    <div class="form-pane active" id="pane1">
-      <div class="form-group">
-        <label>Tipo de trabajo</label>
-        <select id="f_type">
-          <option value="Trabajo Práctico">Trabajo Práctico</option>
-          <option value="Monografía">Monografía</option>
-          <option value="Tarea">Tarea</option>
-          <option value="Proyecto Final">Proyecto Final</option>
-          <option value="Laboratorio">Laboratorio</option>
-          <option value="Informe">Informe</option>
-          <option value="Otro">Otro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Título del trabajo *</label>
-        <input type="text" id="f_title" placeholder="Ej: Análisis de Interpolación Espacial en Arequipa">
-      </div>
-      <div class="form-group">
-        <label>Descripción corta *</label>
-        <textarea id="f_desc" placeholder="¿De qué trata el trabajo? 1-2 oraciones que aparecen en la card."></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Curso / Materia</label>
-          <input type="text" id="f_course" placeholder="Ej: Estadística Espacial">
-        </div>
-        <div class="form-group">
-          <label>Fecha de entrega</label>
-          <input type="date" id="f_date">
-        </div>
-      </div>
-    </div>
-
-    <!-- PASO 2: Detalles -->
-    <div class="form-pane" id="pane2">
-      <div class="form-group">
-        <label>Descripción larga (opcional)</label>
-        <textarea id="f_desc_long" style="min-height:120px;" placeholder="Metodología, resultados, conclusiones… Este texto no aparece en la card pero puedes usarlo para tus notas."></textarea>
-      </div>
-      <div class="form-group">
-        <label>Herramientas / Tags</label>
-        <input type="text" id="f_tags" placeholder="R, ggplot2, sf, Python, QGIS… (separados por coma)">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Calificación (opcional)</label>
-          <input type="text" id="f_grade" placeholder="Ej: 18/20 o Aprobado">
-        </div>
-        <div class="form-group">
-          <label>Semestre (opcional)</label>
-          <input type="text" id="f_semester" placeholder="Ej: 2026-I">
-        </div>
-      </div>
-    </div>
-
-    <!-- PASO 3: Archivos -->
-    <div class="form-pane" id="pane3">
-
-      <!-- CONVERSOR DE URL -->
-      <div class="url-converter">
-        <div class="url-converter-title">🔧 Conversor de URL de GitHub</div>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">
-          Pega la URL de tu repositorio y escribe el nombre del archivo PDF para generar automáticamente la URL raw necesaria.
-        </p>
-        <div class="form-group" style="margin-bottom:10px;">
-          <label>URL del repositorio GitHub</label>
-          <input type="text" id="f_repo_raw" placeholder="https://github.com/Jhonynanicollab/practica_con_shany.git" oninput="actualizarRaw()">
-          <p class="form-hint">Funciona con o sin .git al final.</p>
-        </div>
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:10px;">
-            <label>Nombre del archivo PDF</label>
-            <input type="text" id="f_pdf_name" placeholder="pipelingv2.pdf" oninput="actualizarRaw()">
-          </div>
-          <div class="form-group" style="margin-bottom:10px;">
-            <label>Rama (branch)</label>
-            <input type="text" id="f_branch" placeholder="main" value="main" oninput="actualizarRaw()">
-          </div>
-        </div>
-        <div class="url-preview" id="urlPreview"></div>
-        <button class="btn btn-sm btn-accent" style="margin-top:10px;" onclick="usarURLGenerada()">✓ Usar esta URL</button>
-      </div>
-
-      <div class="form-group">
-        <label>URL final del PDF (raw)</label>
-        <input type="text" id="f_pdf" placeholder="https://raw.githubusercontent.com/…/archivo.pdf" oninput="validarURLPDF()">
-        <p class="form-hint">Puedes pegar directamente una URL raw o usar el conversor de arriba.</p>
-        <div class="url-status" id="pdfStatus" style="display:none;"></div>
-      </div>
-
-      <div class="form-group">
-        <label>URL del repositorio (para el botón "Repositorio")</label>
-        <input type="text" id="f_repo" placeholder="https://github.com/Jhonynanicollab/…">
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <div id="pasoIndicador" style="font-size:12px;color:var(--muted);">Paso 1 de 3</div>
-      <div class="form-actions-right">
-        <button class="btn btn-outline" onclick="cerrarAddModal()">Cancelar</button>
-        <button class="btn btn-outline" id="btnAnterior" onclick="irPaso(pasoActual-1)" style="display:none;">← Atrás</button>
-        <button class="btn btn-accent" id="btnSiguiente" onclick="irPaso(pasoActual+1)">Siguiente →</button>
-        <button class="btn btn-accent" id="btnGuardar" onclick="guardarProyecto()" style="display:none;">✓ Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
 
 <script>
-/* ═══════════════════════════════════
-   DATOS BASE
-═══════════════════════════════════ */
-const BASE_PROJECTS = [
-  {
-    id: 'base_1',
-    type: 'Monografía',
-    title: 'Rasters y Vectores en GIS',
-    desc: 'Trabajo teórico sobre las estructuras de datos raster y vectorial en sistemas de información geográfica, sus diferencias, aplicaciones y conversiones.',
-    tags: ['GIS', 'Raster', 'Vectores', 'Cartografía'],
-    pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/trabajos-de-informes-en-pdf-/main/monografia_raster_vectores.pdf',
-    repo: '',
-    course: '',
-    date: '',
-    grade: '',
-    semester: ''
-  },
-  {
-    id: 'base_2',
-    type: 'Trabajo Práctico',
-    title: 'Análisis Agrícola del Perú',
-    desc: 'Análisis espacial con R usando datos del Censo Agropecuario peruano. Incluye mapas coropléticos, estadísticas por región y visualizaciones temáticas.',
-    tags: ['R', 'sf', 'ggplot2', 'Censo Agropecuario'],
-    pdf: 'https://raw.githubusercontent.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/main/estadistica_espacial.pdf',
-    repo: 'https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales',
-    course: 'Estadística Espacial',
-    date: '',
-    grade: '',
-    semester: ''
-  }
-];
-
-const STORAGE_KEY = 'jhon_portfolio_projects_v2';
-
-function cargarExtra() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch { return []; }
-}
-function todosLos() { return [...BASE_PROJECTS, ...cargarExtra()]; }
-
-/* ═══════════════════════════════════
-   RENDER
-═══════════════════════════════════ */
-function renderProyectos() {
+/* ══════════════════════════════════
+   CARGAR projects.json
+══════════════════════════════════ */
+async function cargarProyectos() {
   const lista = document.getElementById('projectsList');
-  const proyectos = todosLos();
-  lista.innerHTML = '';
-
-  proyectos.forEach((p, i) => {
-    const tagsHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
-    const btnPDF = p.pdf
-      ? `<button class="btn btn-red btn-sm" onclick="abrirLibro('${p.pdf}','${esc(p.title)}')">📖 Ver PDF</button>`
-      : '';
-    const btnRepo = p.repo
-      ? `<a href="${p.repo}" target="_blank" class="btn btn-blue btn-sm">🔗 Repositorio</a>`
-      : '';
-    const btnEliminar = (!p.id.startsWith('base_'))
-      ? `<button class="btn btn-outline btn-sm" style="margin-left:auto;color:var(--danger);border-color:var(--danger);" onclick="eliminarProyecto('${p.id}')">✕</button>`
-      : '';
-
-    const metaExtra = [
-      p.course ? `<span class="project-course">📚 ${esc(p.course)}</span>` : '',
-      p.semester ? `<span class="project-date">${esc(p.semester)}</span>` : '',
-      p.date ? `<span class="project-date">${formatDate(p.date)}</span>` : '',
-      p.grade ? `<span class="project-grade">★ ${esc(p.grade)}</span>` : ''
-    ].filter(Boolean).join('');
-
-    lista.innerHTML += `
-      <div class="project-card">
-        <div class="project-number">${String(i+1).padStart(2,'0')}</div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-type">${esc(p.type)}</span>
-            ${metaExtra}
-          </div>
-          <h3>${esc(p.title)}</h3>
-          <p>${esc(p.desc)}</p>
-          ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
-          <div class="project-actions">
-            ${btnPDF}${btnRepo}${btnEliminar}
-          </div>
-        </div>
+  try {
+    const resp = await fetch('projects.json');
+    if (!resp.ok) throw new Error('No se encontró projects.json');
+    const data = await resp.json();
+    renderProyectos(data);
+  } catch (err) {
+    lista.innerHTML = `
+      <div class="error-state">
+        <span>⚠ No se pudo cargar <code>projects.json</code></span>
+        <small>${err.message}</small>
       </div>`;
-  });
+  }
 }
 
 function esc(s) {
-  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function renderProyectos(proyectos) {
+  const lista = document.getElementById('projectsList');
+  if (!proyectos.length) {
+    lista.innerHTML = '<p style="color:var(--muted);padding:20px 0;">No hay proyectos en projects.json aún.</p>';
+    return;
+  }
+  lista.innerHTML = proyectos.map((p, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    const tagsHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
+    const metaChips = [
+      p.course   ? `<span class="meta-chip chip-course">📚 ${esc(p.course)}</span>` : '',
+      p.semester ? `<span class="meta-chip chip-sem">${esc(p.semester)}</span>` : '',
+      p.date     ? `<span class="meta-chip chip-date">${formatDate(p.date)}</span>` : '',
+      p.grade    ? `<span class="meta-chip chip-grade">★ ${esc(p.grade)}</span>` : '',
+    ].filter(Boolean).join('');
+
+    // botón PDF serializa datos para el modal
+    const pdfData = p.pdf
+      ? `data-pdf="${esc(p.pdf)}" data-title="${esc(p.title)}" data-type="${esc(p.type)}" data-tags="${esc((p.tags||[]).join(', '))}"`
+      : '';
+
+    const btnPDF = p.pdf
+      ? `<button class="btn-pdf" ${pdfData} onclick="abrirPDF(this)">
+           <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.3"/><path d="M10 2v4h4M6 9h4M6 12h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+           Ver PDF
+         </button>`
+      : '';
+    const btnRepo = p.repo
+      ? `<a href="${esc(p.repo)}" target="_blank" class="btn-repo">
+           <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M8 1C4.135 1 1 4.135 1 8c0 3.09 2.005 5.715 4.785 6.635.35.065.48-.15.48-.335 0-.165-.005-.6-.01-1.18-1.945.42-2.355-.94-2.355-.94-.32-.81-.78-1.025-.78-1.025-.635-.435.05-.425.05-.425.705.05 1.075.725 1.075.725.625 1.07 1.64.76 2.04.58.065-.45.245-.76.445-.935-1.555-.175-3.19-.775-3.19-3.455 0-.765.275-1.39.725-1.88-.075-.175-.315-.89.065-1.855 0 0 .59-.19 1.935.72A6.74 6.74 0 0 1 8 4.97c.6.003 1.2.08 1.765.235 1.345-.91 1.935-.72 1.935-.72.38.965.14 1.68.07 1.855.45.49.72 1.115.72 1.88 0 2.685-1.64 3.28-3.2 3.45.25.215.475.64.475 1.29 0 .935-.01 1.685-.01 1.91 0 .185.125.4.485.335C12.995 13.715 15 11.09 15 8c0-3.865-3.135-7-7-7z" fill="currentColor"/></svg>
+           Repositorio
+         </a>`
+      : '';
+
+    return `
+    <article class="project-card" style="--delay:${i * 80}ms">
+      <div class="project-number">${num}</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type-badge">${esc(p.type)}</span>
+          ${metaChips}
+        </div>
+        <h3 class="project-title">${esc(p.title)}</h3>
+        <p class="project-desc">${esc(p.desc)}</p>
+        ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
+        <div class="project-actions">
+          ${btnPDF}
+          ${btnRepo}
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+
+  // Animación de entrada escalonada
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.project-card').forEach(el => {
+      el.classList.add('visible');
+    });
+  });
 }
 
 function formatDate(d) {
   if (!d) return '';
   try {
-    const [y,m,day] = d.split('-');
+    const [y, m, day] = d.split('-');
     const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-    return `${parseInt(day)} ${meses[parseInt(m)-1]} ${y}`;
+    return `${parseInt(day)} ${meses[parseInt(m) - 1]} ${y}`;
   } catch { return d; }
 }
 
-/* ═══════════════════════════════════
+/* ══════════════════════════════════
    VISOR PDF
-═══════════════════════════════════ */
-function abrirLibro(url, titulo) {
-  document.getElementById('bookTitleBar').textContent   = titulo || 'Documento';
-  document.getElementById('bookCoverTitle').textContent = titulo || 'Documento';
-  document.getElementById('bookDownloadBtn').href = url;
-  document.getElementById('bookOpenBtn').href     = url;
-  document.getElementById('bookModal').classList.add('open');
-  document.getElementById('bookCover').classList.remove('hidden');
-  document.getElementById('bookLoader').classList.remove('hidden');
-  document.getElementById('bookIframe').src = '';
+══════════════════════════════════ */
+let currentPdfUrl = '';
+let currentMode = 'google';
+let loadTimeout = null;
 
-  setTimeout(() => {
-    document.getElementById('bookCover').classList.add('hidden');
-    const iframe = document.getElementById('bookIframe');
-    iframe.src = `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(url)}`;
-    iframe.onload = () => document.getElementById('bookLoader').classList.add('hidden');
-    setTimeout(() => document.getElementById('bookLoader').classList.add('hidden'), 8000);
-  }, 800);
+function abrirPDF(btn) {
+  const url   = btn.dataset.pdf;
+  const title = btn.dataset.title || 'Documento';
+  const type  = btn.dataset.type  || '';
+  const tags  = btn.dataset.tags  || '';
+
+  currentPdfUrl = url;
+  currentMode   = 'google';
+
+  document.getElementById('pdfTitleText').textContent    = title;
+  document.getElementById('pdfOpenBtn').href             = url;
+  document.getElementById('pdfDownloadBtn').href         = url;
+  document.getElementById('pdfErrorOpen').href           = url;
+  document.getElementById('pdfMetaType').textContent     = type;
+  document.getElementById('pdfMetaTags').textContent     = tags;
+
+  // Reset modo
+  document.getElementById('modeGoogle').classList.add('active');
+  document.getElementById('modeDirect').classList.remove('active');
+  document.getElementById('modeHint').style.display = '';
+
+  document.getElementById('pdfModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  cargarIframe('google');
 }
 
-function cerrarLibro() {
-  document.getElementById('bookModal').classList.remove('open');
-  document.getElementById('bookIframe').src = '';
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('modeGoogle').classList.toggle('active', mode === 'google');
+  document.getElementById('modeDirect').classList.toggle('active', mode === 'direct');
+  document.getElementById('modeHint').style.display = mode === 'direct' ? 'none' : '';
+  cargarIframe(mode);
 }
 
-/* ═══════════════════════════════════
-   FORMULARIO POR PASOS
-═══════════════════════════════════ */
-let pasoActual = 1;
+function cargarIframe(mode) {
+  const iframe = document.getElementById('pdfIframe');
+  const loading = document.getElementById('pdfLoading');
+  const error   = document.getElementById('pdfError');
 
-function irPaso(n) {
-  if (n < 1 || n > 3) return;
-  document.querySelectorAll('.form-pane').forEach((p,i) => {
-    p.classList.toggle('active', i+1 === n);
+  // Reset estado
+  iframe.classList.add('hidden');
+  error.classList.add('hidden');
+  loading.classList.remove('hidden');
+
+  clearTimeout(loadTimeout);
+
+  const src = mode === 'google'
+    ? `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(currentPdfUrl)}`
+    : currentPdfUrl;
+
+  iframe.src = '';
+  requestAnimationFrame(() => {
+    iframe.src = src;
   });
-  document.querySelectorAll('.form-step-btn').forEach((b,i) => {
-    b.classList.toggle('active', i+1 === n);
-  });
-  pasoActual = n;
-  document.getElementById('pasoIndicador').textContent = `Paso ${n} de 3`;
-  document.getElementById('btnAnterior').style.display = n > 1 ? 'inline-flex' : 'none';
-  document.getElementById('btnSiguiente').style.display = n < 3 ? 'inline-flex' : 'none';
-  document.getElementById('btnGuardar').style.display = n === 3 ? 'inline-flex' : 'none';
-}
 
-function abrirAddModal() {
-  document.getElementById('addModal').classList.add('open');
-  irPaso(1);
-  setTimeout(() => document.getElementById('f_title').focus(), 100);
-}
+  // Timeout de seguridad: si tarda más de 12s, mostrar error
+  loadTimeout = setTimeout(() => {
+    if (!iframe.classList.contains('loaded')) {
+      loading.classList.add('hidden');
+      error.classList.remove('hidden');
+    }
+  }, 12000);
 
-function cerrarAddModal() {
-  document.getElementById('addModal').classList.remove('open');
-  limpiarForm();
-}
-
-function limpiarForm() {
-  const campos = ['f_title','f_desc','f_desc_long','f_tags','f_pdf','f_repo',
-                  'f_course','f_date','f_grade','f_semester',
-                  'f_repo_raw','f_pdf_name','f_branch'];
-  campos.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (el.tagName === 'SELECT') el.selectedIndex = 0;
-    else el.value = id === 'f_branch' ? 'main' : '';
-  });
-  document.getElementById('urlPreview').classList.remove('visible');
-  document.getElementById('urlPreview').textContent = '';
-  document.getElementById('pdfStatus').style.display = 'none';
-  irPaso(1);
-}
-
-/* ═══════════════════════════════════
-   CONVERSOR DE URL GITHUB
-═══════════════════════════════════ */
-function githubToRaw(repoUrl, fileName, branch) {
-  if (!repoUrl || !fileName) return '';
-  branch = branch || 'main';
-  let clean = repoUrl.trim()
-    .replace(/\.git$/, '')
-    .replace(/\/$/, '');
-
-  // Extraer user/repo de cualquier formato
-  const match = clean.match(/github\.com\/([^\/]+\/[^\/]+)/);
-  if (!match) return '';
-
-  return `https://raw.githubusercontent.com/${match[1]}/${branch}/${fileName.trim()}`;
-}
-
-function actualizarRaw() {
-  const repo   = document.getElementById('f_repo_raw').value;
-  const file   = document.getElementById('f_pdf_name').value;
-  const branch = document.getElementById('f_branch').value;
-  const raw = githubToRaw(repo, file, branch);
-  const preview = document.getElementById('urlPreview');
-  if (raw) {
-    preview.textContent = raw;
-    preview.classList.add('visible');
-  } else {
-    preview.classList.remove('visible');
-  }
-}
-
-function usarURLGenerada() {
-  const repo   = document.getElementById('f_repo_raw').value;
-  const file   = document.getElementById('f_pdf_name').value;
-  const branch = document.getElementById('f_branch').value;
-  const raw = githubToRaw(repo, file, branch);
-
-  if (!raw) { mostrarToast('⚠ Completa el repo y el nombre del archivo.', true); return; }
-
-  document.getElementById('f_pdf').value = raw;
-  mostrarToast('✓ URL copiada al campo de PDF');
-
-  // También copiar URL base del repo si el campo está vacío
-  if (!document.getElementById('f_repo').value) {
-    const repoClean = repo.replace(/\.git$/, '').trim();
-    document.getElementById('f_repo').value = repoClean;
-  }
-
-  validarURLPDF();
-}
-
-/* Validación visual de la URL del PDF */
-function validarURLPDF() {
-  const url = document.getElementById('f_pdf').value.trim();
-  const status = document.getElementById('pdfStatus');
-  if (!url) { status.style.display = 'none'; return; }
-
-  const esRaw = url.includes('raw.githubusercontent.com');
-  const esPDF = url.endsWith('.pdf');
-
-  status.style.display = 'inline-flex';
-  if (esRaw && esPDF) {
-    status.className = 'url-status ok';
-    status.textContent = '✓ URL raw válida';
-  } else if (!esRaw) {
-    status.className = 'url-status error';
-    status.textContent = '⚠ Debe ser una URL raw de GitHub (raw.githubusercontent.com)';
-  } else {
-    status.className = 'url-status checking';
-    status.textContent = '○ Verifica que termine en .pdf';
-  }
-}
-
-/* ═══════════════════════════════════
-   GUARDAR PROYECTO
-═══════════════════════════════════ */
-function guardarProyecto() {
-  const title = document.getElementById('f_title').value.trim();
-  const desc  = document.getElementById('f_desc').value.trim();
-  if (!title || !desc) {
-    irPaso(1);
-    mostrarToast('⚠ Completa el título y la descripción (Paso 1).', true);
-    return;
-  }
-
-  const extra = cargarExtra();
-  const nuevo = {
-    id:        'u_' + Date.now(),
-    type:      document.getElementById('f_type').value,
-    title,
-    desc,
-    desc_long: document.getElementById('f_desc_long').value.trim(),
-    tags:      document.getElementById('f_tags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    pdf:       document.getElementById('f_pdf').value.trim(),
-    repo:      document.getElementById('f_repo').value.trim(),
-    course:    document.getElementById('f_course').value.trim(),
-    date:      document.getElementById('f_date').value,
-    grade:     document.getElementById('f_grade').value.trim(),
-    semester:  document.getElementById('f_semester').value.trim()
+  iframe.onload = () => {
+    clearTimeout(loadTimeout);
+    loading.classList.add('hidden');
+    error.classList.add('hidden');
+    iframe.classList.remove('hidden');
+    iframe.classList.add('loaded');
   };
 
-  extra.push(nuevo);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
-  cerrarAddModal();
-  renderProyectos();
-  mostrarToast('✓ Proyecto guardado correctamente');
-
-  setTimeout(() => {
-    const cards = document.querySelectorAll('.project-card');
-    if (cards.length) cards[cards.length-1].scrollIntoView({ behavior:'smooth', block:'center' });
-  }, 300);
+  iframe.onerror = () => {
+    clearTimeout(loadTimeout);
+    loading.classList.add('hidden');
+    error.classList.remove('hidden');
+    iframe.classList.add('hidden');
+  };
 }
 
-function eliminarProyecto(id) {
-  if (!confirm('¿Eliminar este proyecto?')) return;
-  const extra = cargarExtra().filter(p => p.id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(extra));
-  renderProyectos();
-  mostrarToast('Proyecto eliminado.');
+function cerrarPDF() {
+  clearTimeout(loadTimeout);
+  document.getElementById('pdfModal').classList.remove('open');
+  document.body.style.overflow = '';
+  const iframe = document.getElementById('pdfIframe');
+  iframe.src = '';
+  iframe.classList.remove('loaded');
 }
 
-/* ═══════════════════════════════════
-   TOAST
-═══════════════════════════════════ */
-function mostrarToast(msg, esError) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.borderColor = esError ? 'var(--danger)' : 'var(--accent)';
-  t.style.color       = esError ? 'var(--danger)' : 'var(--accent)';
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
-}
+/* ══════════════════════════════════
+   NAV scroll effect
+══════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
 
-/* ═══════════════════════════════════
-   EVENTOS GLOBALES
-═══════════════════════════════════ */
+/* ══════════════════════════════════
+   TECLADO
+══════════════════════════════════ */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { cerrarLibro(); cerrarAddModal(); }
-});
-document.getElementById('bookModal').addEventListener('click', function(e) {
-  if (e.target === this) cerrarLibro();
-});
-document.getElementById('addModal').addEventListener('click', function(e) {
-  if (e.target === this) cerrarAddModal();
+  if (e.key === 'Escape') cerrarPDF();
 });
 
-/* ═══════════════════════════════════
+/* ══════════════════════════════════
    INIT
-═══════════════════════════════════ */
-renderProyectos();
+══════════════════════════════════ */
+cargarProyectos();
 </script>
 </body>
 </html>

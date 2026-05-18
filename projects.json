@@ -1,0 +1,48 @@
+[
+  {
+    "type": "Monografía",
+    "title": "Rasters y Vectores en GIS",
+    "desc": "Trabajo teórico sobre estructuras raster y vectorial.",
+    "tags": ["GIS", "Raster", "Vectores"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-de-informes-en-pdf-/main/monografia_raster_vectores.pdf",
+    "repo": ""
+  },
+  {
+    "type": "Trabajo Práctico",
+    "title": "Análisis Agrícola del Perú",
+    "desc": "Análisis espacial con R usando datos del censo.",
+    "tags": ["R", "sf", "ggplot2"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales/main/estadistica_espacial.pdf",
+    "repo": "https://github.com/Jhonynanicollab/analizar_ubicaciones_geoespaciales"
+  },
+
+  {
+    "type": "Trabajo Práctico",
+    "title": "Practica con shannyn en R ",
+    "desc": "Análisis de datos con R usando el paquete shannyn.",
+    "tags": ["R", "shannyn", "análisis de datos"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/practica_con_shany/main/pipelingv2.pdf",
+    "repo": "https://github.com/Jhonynanicollab/practica_con_shany.git"
+  },
+
+  {
+    "type": "Trabajo Práctico",
+    "title": "ejercicio de variables gaussianas",
+    "desc": "resolucion a ejercicios de variables gaussianas segun la teoria",
+    "tags": ["gaussianas", "ejercicios", "teoria"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/gausianna_2.pdf",
+    "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
+  }
+  ,
+
+  {
+    "type": "revision de articulo y explicacion visual ",
+    "title": "Modelado espaciotemporal de COVID-19usando índice de movimiento y actividad humana",
+    "desc": "en este trabajo se hace una revision de un articulo y se hace una explicacion visual de los resultados obtenidos en el articulo",
+    "tags": ["covid-19", "modelado espaciotemporal", "indice de movimiento", "actividad humana"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20Modelado%20espaciotemporal%20de%20COVID-19usando%20índice%20de%20movimiento%20y%20actividad%20humana%20.pdf",
+    "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
+  }
+
+
+]
