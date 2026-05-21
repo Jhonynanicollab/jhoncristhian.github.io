@@ -43,6 +43,16 @@
     "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20Modelado%20espaciotemporal%20de%20COVID-19usando%20índice%20de%20movimiento%20y%20actividad%20humana%20.pdf",
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
   }
+  ,
+
+   {
+    "type": "practica con la metodologia de jenks usando datos geoespaciales ",
+    "title": "Planificación Espacial General y Zonificación para el Cultivo de Quinua (Chenopodium quinoa Willd.)",
+    "desc": "en este trabajo se realiza una practica con la metodologia de jenks usando datos geoespaciales para la planificación espacial general y zonificación para el cultivo de quinua (Chenopodium quinoa Willd.)",
+    "tags": ["jenks", "planificación espacial", "zonificación", "cultivo de quinua"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajo-con-la-metodologia-de-jenks/main/estadistica_espacial___jenks.pdf",
+    "repo": "https://github.com/Jhonynanicollab/trabajo-con-la-metodologia-de-jenks.git"
+  }
 
 
 ]
