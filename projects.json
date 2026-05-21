@@ -39,7 +39,7 @@
     "title": "Modelado espaciotemporal de COVID-19usando índice de movimiento y actividad humana",
     "desc": "en este trabajo se hace una revision de un articulo y se hace una explicacion visual de los resultados obtenidos en el articulo",
     "tags": ["covid-19", "modelado espaciotemporal", "indice de movimiento", "actividad humana"],
-    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/revision%20de%20articulo%20cientifico.pdf",
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-ixndependientes-de-estad-stica-espacial/main/articulo%20Modelado%20espaciotemporal%20de%20COVID-19usando%20índice%20de%20movimiento%20y%20actividad%20humana%20.pdf",
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
   },
 
@@ -50,7 +50,25 @@
     "tags": ["jenks", "planificación espacial", "zonificación", "cultivo de quinua"],
     "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajo-con-la-metodologia-de-jenks/main/estadistica_espacial___jenks.pdf",
     "repo": "https://github.com/Jhonynanicollab/trabajo-con-la-metodologia-de-jenks.git"
+  },
+
+  {
+  "type": "Trabajo Práctico",
+  "title": "Análisis de Autocorrelación Espacial — Índice de Moran",
+  "desc": "Aplicativo interactivo en Shiny para calcular el Índice de Moran global y local (LISA) a nivel departamental en Perú, con datos reales de homicidios, pobreza, desnutrición, dengue y altitud.",
+  "tags": ["R", "Shiny", "spdep", "leaflet", "LISA", "autocorrelación espacial"],
+  "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/Indice%20de%20Moran%20pipeline/An%C3%A1lisis%20Multitem%C3%A1tico%20a%20Nivel%20Departamental.pdf",
+  "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/Indice%20de%20Moran%20pipeline"
+  },
+
+  {
+  "type": "Artículo Científico",
+  "title": "Spatial Statistics Methods for the Analysis of Infectious Disease Clusters in Latin America",
+  "desc": "Revisión sistemática siguiendo PRISMA 2020 sobre métodos de estadística espacial (Moran, LISA, SaTScan, Getis-Ord Gi*) aplicados a enfermedades infecciosas en América Latina (2015–2025), con 76 artículos analizados.",
+  "tags": ["revisión sistemática", "PRISMA 2020", "estadística espacial", "LISA", "SaTScan", "enfermedades infecciosas", "LaTeX"],
+  "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20sistematico/Submission%20y%20articulo%20completo.pdf",
+  "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/articulo%20sistematico"
   }
 
-
+  
 ]
