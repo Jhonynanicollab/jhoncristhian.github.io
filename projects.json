@@ -32,18 +32,16 @@
     "tags": ["gaussianas", "ejercicios", "teoria"],
     "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/gausianna_2.pdf",
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
-  }
-  ,
+  },
 
   {
     "type": "revision de articulo y explicacion visual ",
     "title": "Modelado espaciotemporal de COVID-19usando índice de movimiento y actividad humana",
     "desc": "en este trabajo se hace una revision de un articulo y se hace una explicacion visual de los resultados obtenidos en el articulo",
     "tags": ["covid-19", "modelado espaciotemporal", "indice de movimiento", "actividad humana"],
-    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20Modelado%20espaciotemporal%20de%20COVID-19usando%20índice%20de%20movimiento%20y%20actividad%20humana%20.pdf",
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-ixndependientes-de-estad-stica-espacial/main/articulo%20Modelado%20espaciotemporal%20de%20COVID-19usando%20índice%20de%20movimiento%20y%20actividad%20humana%20.pdf",
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
-  }
-  ,
+  },
 
   {
     "type": "practica con la metodologia de jenks usando datos geoespaciales ",
