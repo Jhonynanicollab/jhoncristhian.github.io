@@ -24,11 +24,15 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(74,252,196,.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(59,130,246,.1), transparent 24%),
+    linear-gradient(180deg, #05070d 0%, #07090f 48%, #05101d 100%);
   color: var(--text);
   font-family: 'Outfit', sans-serif;
   font-size: 15px;
   line-height: 1.65;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -39,14 +43,15 @@ nav {
   position: sticky; top: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 56px;
-  background: transparent;
-  transition: background .3s, border-color .3s;
-  border-bottom: 1px solid transparent;
+  background: rgba(7, 9, 15, 0.6);
+  backdrop-filter: blur(18px);
+  transition: background .3s, border-color .3s, transform .3s;
+  border-bottom: 1px solid rgba(58, 97, 152, 0.2);
 }
 nav.scrolled {
-  background: rgba(7, 9, 15, 0.92);
-  backdrop-filter: blur(14px);
-  border-color: var(--border);
+  background: rgba(7, 9, 15, 0.95);
+  transform: translateY(-1px);
+  border-color: var(--border2);
 }
 
 .nav-logo {
@@ -69,9 +74,9 @@ nav.scrolled {
   font-weight: 500;
   letter-spacing: .4px;
   margin-left: 32px;
-  transition: color .2s;
+  transition: color .2s, transform .2s;
 }
-.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover { color: var(--accent); transform: translateY(-1px); }
 
 .nav-tag {
   font-size: 11px;
@@ -91,8 +96,20 @@ nav.scrolled {
   min-height: 88vh;
   display: flex;
   align-items: center;
+  background-image: url('1839c464370fe1e8134b1dcb4888a0df.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #07101a;
 }
-.hero-inner { position: relative; z-index: 2; max-width: 800px; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 9, 15, 0.04) 0%, rgba(7, 9, 15, 0.12) 70%, rgba(7, 9, 15, 0.2) 100%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; max-width: 780px; }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -112,11 +129,6 @@ nav.scrolled {
   width: 6px; height: 6px;
   background: var(--accent);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: .4; transform: scale(.7); }
 }
 
 .hero-title {
@@ -164,29 +176,9 @@ nav.scrolled {
 }
 
 /* Fondo hero */
-.hero-grid-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-image:
-    linear-gradient(rgba(26,36,56,.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26,36,56,.3) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-}
+.hero-grid-bg,
 .hero-orb {
-  position: absolute; z-index: 0;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-}
-.orb-1 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(74,252,196,.07), transparent 70%);
-  top: -100px; right: -100px;
-}
-.orb-2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(59,130,246,.06), transparent 70%);
-  bottom: 0; left: -50px;
+  display: none;
 }
 
 /* ══════════════════════════════════════════
@@ -220,22 +212,60 @@ nav.scrolled {
 .section-title span { color: var(--accent); }
 
 /* ══════════════════════════════════════════
-   PROJECT CARDS
+   DASHBOARD / PROYECTOS
 ══════════════════════════════════════════ */
-.projects-list {
-  display: flex;
-  flex-direction: column;
+.projects-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
+  margin-bottom: 24px;
+  align-items: stretch;
+}
+
+.summary-card {
+  background: rgba(11, 16, 29, 0.92);
+  border: 1px solid rgba(74, 252, 196, 0.12);
+  border-radius: 22px;
+  padding: 24px 22px;
+  display: grid;
+  gap: 10px;
+  min-height: 120px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+.summary-card strong {
+  display: block;
+  font-size: 34px;
+  color: #e8f4ff;
+  letter-spacing: -.02em;
+}
+
+.summary-card span {
+  color: var(--text2);
+  font-size: 13px;
+}
+
+.unit-section {
+  margin-bottom: 48px;
+  display: grid;
+  gap: 20px;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
 }
 
 .project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 28px 32px;
+  background: rgba(14, 20, 34, 0.92);
+  border: 1px solid rgba(74, 252, 196, 0.10);
+  backdrop-filter: blur(14px);
+  border-radius: calc(var(--r) + 6px);
+  padding: 24px;
   display: flex;
-  gap: 28px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
   position: relative;
   overflow: hidden;
   transition: border-color .3s, box-shadow .3s, transform .2s;
@@ -255,23 +285,24 @@ nav.scrolled {
   content: '';
   position: absolute; left: 0; top: 0; bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, var(--accent), #38bdf8);
+  background: rgba(74,252,196,.25);
+  opacity: 0.8;
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  transition: transform .35s ease;
 }
 .project-card:hover::after { transform: scaleY(1); }
 .project-card:hover {
-  border-color: var(--border2);
-  box-shadow: 0 4px 40px rgba(74,252,196,.06), 0 1px 0 rgba(74,252,196,.1);
+  border-color: rgba(74, 252, 196, 0.18);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .18);
   transform: translateY(-1px);
 }
 
 .project-number {
   font-family: 'DM Serif Display', serif;
-  font-size: 40px;
+  font-size: 42px;
   font-style: italic;
-  color: var(--border2);
+  color: rgba(148, 163, 184, 0.8);
   line-height: 1;
   min-width: 52px;
   transition: color .3s;
@@ -316,7 +347,7 @@ nav.scrolled {
   color: var(--text2);
   font-size: 14px;
   margin-bottom: 16px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .tags {
@@ -340,7 +371,7 @@ nav.scrolled {
 }
 
 /* Botones de acción en cards */
-.btn-pdf, .btn-repo {
+.btn-pdf, .btn-repo, .btn-excel {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: 'Outfit', sans-serif;
   font-size: 12px; font-weight: 600;
@@ -353,20 +384,25 @@ nav.scrolled {
   letter-spacing: .3px;
 }
 .btn-pdf {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: linear-gradient(135deg, #60a5fa, #4f46e5);
   color: #fff;
-  box-shadow: 0 2px 10px rgba(239,68,68,.2);
+  box-shadow: 0 4px 20px rgba(96,165,250,.2);
 }
 .btn-pdf:hover {
   opacity: .9; transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(239,68,68,.3);
+  box-shadow: 0 4px 16px rgba(96,165,250,.25);
 }
-.btn-repo {
-  background: var(--card);
+.btn-repo, .btn-excel {
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text2);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(59,130,246,.20);
 }
-.btn-repo:hover { border-color: var(--blue); color: #93c5fd; transform: translateY(-1px); }
+.btn-repo:hover, .btn-excel:hover {
+  border-color: #7dd3fc;
+  color: #bae6fd;
+  background: rgba(59,130,246,0.16);
+  transform: translateY(-1px);
+}
 
 /* ══════════════════════════════════════════
    ESTADOS DE CARGA / ERROR
@@ -405,13 +441,18 @@ nav.scrolled {
   gap: 10px;
 }
 .skill-card {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(74,252,196,.08);
   border-radius: var(--r);
   padding: 16px 18px;
   display: flex; align-items: center; gap: 10px;
-  transition: border-color .2s, transform .15s;
+  transition: border-color .2s, transform .15s, background .2s;
   cursor: default;
+}
+.skill-card:hover {
+  border-color: rgba(74,252,196,.2);
+  background: rgba(74,252,196,0.05);
+  transform: translateY(-2px);
 }
 .skill-card:hover {
   border-color: var(--border2);
@@ -707,6 +748,245 @@ footer {
 }
 
 /* ══════════════════════════════════════════
+   UNIDADES & PROYECTOS
+══════════════════════════════════════════ */
+.unit-section {
+  margin-bottom: 48px;
+}
+.unit-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border2);
+  letter-spacing: .2px;
+}
+
+.btn-excel {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-excel:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+/* ══════════════════════════════════════════
+   VISOR EXCEL — MODAL
+══════════════════════════════════════════ */
+#excelModal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+#excelModal.open { display: flex; }
+
+.excel-overlay {
+  position: absolute; inset: 0;
+  background: rgba(4, 7, 14, 0.88);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.excel-panel {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  width: min(960px, 96vw);
+  height: min(680px, 92vh);
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, .05),
+    0 32px 80px rgba(0,0,0,.8),
+    0 8px 24px rgba(0,0,0,.5);
+  animation: panelIn .38s cubic-bezier(.16,1,.3,1);
+}
+
+/* Header del modal Excel */
+.excel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 18px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.excel-header-left {
+  display: flex; align-items: center; gap: 14px;
+}
+.excel-dots {
+  display: flex; align-items: center; gap: 6px;
+}
+.edot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity .15s, transform .15s;
+}
+.edot:hover { opacity: .8; transform: scale(1.1); }
+.edot-r { background: #ff5f57; }
+.edot-y { background: #febc2e; cursor: default; }
+.edot-g { background: #28c840; cursor: default; }
+
+.excel-title-bar {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--text);
+  max-width: 300px;
+}
+.excel-doc-icon { font-size: 14px; }
+#excelTitleText {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+.excel-header-right {
+  display: flex; align-items: center; gap: 8px;
+}
+.excel-action-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500;
+  color: var(--text2);
+  text-decoration: none;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 7px;
+  transition: border-color .2s, color .2s;
+}
+.excel-action-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+.excel-close-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text2);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.excel-close-btn:hover { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,.08); }
+
+/* Zona del Excel */
+.excel-stage {
+  flex: 1;
+  position: relative;
+  background: #111827;
+  overflow: hidden;
+}
+
+#excelIframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+#excelIframe.hidden { display: none; }
+
+#excelContent {
+  position: absolute; inset: 0;
+  overflow: auto;
+  padding: 18px;
+  background: #0f172a;
+  color: var(--text);
+  font-size: 14px;
+}
+#excelContent.hidden { display: none; }
+#excelContent table {
+  width: 100%; border-collapse: collapse;
+  margin-bottom: 0;
+}
+#excelContent th,
+#excelContent td {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+#excelContent th {
+  background: rgba(59, 130, 246, 0.12);
+  color: #bfdbfe;
+}
+#excelContent tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
+}
+#excelContent .sheet-container {
+  min-width: 100%;
+}
+
+/* Loading del Excel */
+.excel-loading {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px;
+  background: #0b101a;
+}
+.excel-loading.hidden { display: none; }
+.excel-loading-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin .85s linear infinite;
+}
+.excel-loading-text {
+  font-size: 15px; font-weight: 500; color: var(--text2);
+}
+.excel-loading-sub {
+  font-size: 12px; color: var(--muted);
+}
+
+/* Error del Excel */
+.excel-error {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+  background: #0b101a;
+  padding: 32px;
+  text-align: center;
+}
+.excel-error.hidden { display: none; }
+.excel-error-icon { font-size: 40px; }
+.excel-error-title { font-size: 16px; font-weight: 600; color: var(--text); }
+.excel-error-sub { font-size: 13px; color: var(--muted); max-width: 360px; }
+.excel-error-actions {
+  display: flex; gap: 10px; margin-top: 8px;
+}
+.excel-err-btn {
+  display: inline-flex; align-items: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  transition: border-color .2s, color .2s;
+}
+.excel-err-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+.excel-err-btn-accent {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+.excel-err-btn-accent:hover { opacity: .88; color: #fff; border-color: #3b82f6; }
+
+/* ══════════════════════════════════════════
    RESPONSIVO
 ══════════════════════════════════════════ */
 @media (max-width: 720px) {
@@ -723,6 +1003,10 @@ footer {
   #pdfModal { padding: 0; }
   .pdf-action-btn span, .pdf-action-btn { font-size: 11px; padding: 5px 9px; }
   .mode-hint { display: none; }
+
+  .excel-panel { height: 100dvh; border-radius: 0; width: 100vw; }
+  #excelModal { padding: 0; }
+  .excel-action-btn { font-size: 11px; padding: 5px 9px; }
 
   .skills-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }

@@ -1,5 +1,6 @@
 [
   {
+    "unit": 1,
     "type": "Monografía",
     "title": "Rasters y Vectores en GIS",
     "desc": "Trabajo teórico sobre estructuras raster y vectorial.",
@@ -8,6 +9,7 @@
     "repo": ""
   },
   {
+    "unit": 1,
     "type": "Trabajo Práctico",
     "title": "Análisis Agrícola del Perú",
     "desc": "Análisis espacial con R usando datos del censo.",
@@ -17,6 +19,7 @@
   },
 
   {
+    "unit": 1,
     "type": "Trabajo Práctico",
     "title": "Practica con shannyn en R ",
     "desc": "Análisis de datos con R usando el paquete shannyn.",
@@ -26,6 +29,7 @@
   },
 
   {
+    "unit": 1,
     "type": "Trabajo Práctico",
     "title": "ejercicio de variables gaussianas",
     "desc": "resolucion a ejercicios de variables gaussianas segun la teoria",
@@ -34,7 +38,8 @@
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
   },
 
-   {
+  {
+    "unit": 1,
     "type": "revision de articulo y explicacion visual ",
     "title": "Modelado espaciotemporal de COVID-19usando índice de movimiento y actividad humana",
     "desc": "en este trabajo se hace una revision de un articulo y se hace una explicacion visual de los resultados obtenidos en el articulo",
@@ -43,8 +48,7 @@
     "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main"
   },
 
-  {
-    "type": "practica con la metodologia de jenks usando datos geoespaciales ",
+  {  "unit": 1,    "type": "practica con la metodologia de jenks usando datos geoespaciales ",
     "title": "Planificación Espacial General y Zonificación para el Cultivo de Quinua (Chenopodium quinoa Willd.)",
     "desc": "en este trabajo se realiza una practica con la metodologia de jenks usando datos geoespaciales para la planificación espacial general y zonificación para el cultivo de quinua (Chenopodium quinoa Willd.)",
     "tags": ["jenks", "planificación espacial", "zonificación", "cultivo de quinua"],
@@ -53,6 +57,7 @@
   },
 
   {
+  "unit": 1,
   "type": "Trabajo Práctico",
   "title": "Análisis de Autocorrelación Espacial — Índice de Moran",
   "desc": "Aplicativo interactivo en Shiny para calcular el Índice de Moran global y local (LISA) a nivel departamental en Perú, con datos reales de homicidios, pobreza, desnutrición, dengue y altitud.",
@@ -62,12 +67,25 @@
   },
 
   {
+  "unit": 1,
   "type": "Artículo Científico",
   "title": "Spatial Statistics Methods for the Analysis of Infectious Disease Clusters in Latin America",
   "desc": "Revisión sistemática siguiendo PRISMA 2020 sobre métodos de estadística espacial (Moran, LISA, SaTScan, Getis-Ord Gi*) aplicados a enfermedades infecciosas en América Latina (2015–2025), con 76 artículos analizados.",
   "tags": ["revisión sistemática", "PRISMA 2020", "estadística espacial", "LISA", "SaTScan", "enfermedades infecciosas", "LaTeX"],
   "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20sistematico/Submission%20y%20articulo%20completo.pdf",
   "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/articulo%20sistematico"
+  }
+  ,
+  {
+  "unit": 2,
+  "type": "practica",
+  "title": "indice de moran usando metodos vecinos torre y reyna",
+  "desc": "rsolucion del ejemplo del pdf entregado usando el metodo de vecinos torre y reyna.",
+  "tags": ["R", "Moran", "vecinos", "LISA", "autocorrelación espacial"],
+  "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/indice%20de%20moran%20ejercicios/tarea_de_indice%20de%20moran.pdf",
+  "excel": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/indice%20de%20moran%20ejercicios/procedimiento%20en%20hoja%20de%20calculo.xlsx",
+  "excel_repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/indice%20de%20moran%20ejercicios",
+  "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/indice%20de%20moran%20ejercicios"
   }
 
   
