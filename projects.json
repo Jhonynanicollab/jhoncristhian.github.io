@@ -86,7 +86,32 @@
   "excel": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/indice%20de%20moran%20ejercicios/procedimiento%20en%20hoja%20de%20calculo.xlsx",
   "excel_repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/indice%20de%20moran%20ejercicios",
   "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/indice%20de%20moran%20ejercicios"
+  },
+  {
+    "unit": 2,
+    "type": "Trabajo Práctico",
+    "title": "Algoritmo en R para replicar metodología de artículo",
+    "desc": "Actividad de la Unidad 2 donde se reproduce una metodología de análisis espacial descrita en un artículo científico, utilizando R para transformar, visualizar y representar resultados de forma reproducible.",
+    "tags": ["R", "metodología", "artículo", "análisis espacial"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/algoritmo-en-r-para-replicar-metodolog-a-de-articulo-/main/peaper_analisis_espacial.pdf",
+    "repo": "https://github.com/Jhonynanicollab/algoritmo-en-r-para-replicar-metodolog-a-de-articulo-.git"
+  },
+  {
+    "unit": 2,
+    "type": "Trabajo Grupal",
+    "title": "Índices de Vegetación Satelital",
+    "desc": "Actividad grupal de la Unidad 2 con resultados y análisis presentados en un informe sobre índices de vegetación satelital.",
+    "tags": ["grupal", "vegetación", "sensores remotos", "análisis espacial"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/indice%20de%20vegetacion/paper%20indices%20de%20Vegetacion%20Satelital_1.pdf"
+  },
+  {
+    "unit": 2,
+    "type": "Artículo Científico Aplicado",
+    "title": "Spatio-Temporal Cluster Detection of Forest Fires in Southern Peru (2017–2025) Using SaTScan and Spatial Autocorrelation",
+    "desc": "Artículo aplicado de la Unidad 2 sobre la detección de conglomerados espacio-temporales de incendios forestales en el sur del Perú entre 2017 y 2025 mediante el método SaTScan y análisis de autocorrelación espacial.",
+    "tags": ["LaTeX", "SaTScan", "incendios forestales", "autocorrelación espacial", "Perú"],
+    "pdf": "https://raw.githubusercontent.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/main/articulo%20aplicado/main.pdf",
+    "repo": "https://github.com/Jhonynanicollab/trabajos-independientes-de-estad-stica-espacial/tree/main/articulo%20aplicado"
   }
-
   
 ]
